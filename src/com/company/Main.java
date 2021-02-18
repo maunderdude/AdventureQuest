@@ -1,5 +1,7 @@
 package com.company;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
@@ -7,12 +9,10 @@ import java.util.concurrent.TimeUnit;
 public class Main {
 
 
-    public static void main(String[] args) throws InterruptedException {
-
-       // new GUI();
 
 
 
+       /*
         // Variables
         int trap = 5;
         boolean testBoolean = true;
@@ -711,6 +711,10 @@ public class Main {
         System.out.println("************Continue here for break after village and city*********");
 
 
+*/
 
-    }
+
+
+
+
 }

@@ -11,7 +11,7 @@ public class Player {
     String playerName;
     int playerHealth = 20;
     int playerAttack;
-    int potionCapacity = 10;
+    int potionCapacity = 0;
     int attackValues[] = {0, 1, 2, 3, 4, 5};
     int specialAttackValues[] = {0, 1, 2};
     int potion = 5;
@@ -100,6 +100,9 @@ public class Player {
         }
 
     }
+
+
+
 
 
 

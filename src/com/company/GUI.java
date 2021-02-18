@@ -16,7 +16,7 @@ public class GUI {
     // Fonts
     Font titleFont = new Font("Impact", Font.PLAIN, 70 );
     Font startFont = new Font("Impact", Font.PLAIN, 30);
-    Font mainText = new Font("Times New Roman", Font.PLAIN, 40);
+    Font mainText = new Font("Times New Roman", Font.PLAIN, 30);
     Font choiceText = new Font("Times New Roman", Font.PLAIN, 50);
 
 
@@ -28,6 +28,7 @@ public class GUI {
     JPanel startButtonPanel = new JPanel();
     JPanel choiceButton = new JPanel();
     JPanel playerPanel = new JPanel();
+    JPanel mainTextPanel = new JPanel();
 
     // Label
     JLabel label = new JLabel();
@@ -41,6 +42,7 @@ public class GUI {
     JButton startButton = new JButton();
     JButton choice1 = new JButton();
     JButton choice2 = new JButton();
+    JButton choice3 = new JButton();
 
     // Text
     JTextArea mainTextPlace = new JTextArea();
@@ -48,13 +50,16 @@ public class GUI {
     // Container
     Container container;
 
-    // Handler
-    TitleHandler titleScreenHandler = new TitleHandler();
+    Player player = new Player();
 
-    public GUI(){
+    String position;
+
+    // --------------------------------------------------------------------------------------------
+
+    public void createGUI(Game.ChoiceHandler cHandler) {
 
         // Creating frame for GUI
-        frame.setSize(800,800);
+        frame.setSize(800, 800);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setBackground(Color.gray);
         frame.setTitle("Adventure Quest");
@@ -63,7 +68,7 @@ public class GUI {
         container = frame.getContentPane();
 
         // Set panel for Title
-        panel.setBounds(100,100,600,150);
+        panel.setBounds(100, 100, 600, 150);
         panel.setBackground(Color.gray);
         panel.setBorder(BorderFactory.createRaisedBevelBorder());
         label = new JLabel("Adventure Quest");
@@ -71,7 +76,8 @@ public class GUI {
         label.setFont(titleFont);
 
         // Set panel for start button
-        startButtonPanel.setBounds(300,500,200,60);
+
+        startButtonPanel.setBounds(300, 500, 200, 60);
         startButtonPanel.setBackground(Color.gray);
 
         // Create start button
@@ -79,63 +85,21 @@ public class GUI {
         startButton.setBackground(Color.gray);
         startButton.setForeground(Color.black);
         startButton.setFont(startFont);
+        startButton.setFocusPainted(false);
         //
-        startButton.addActionListener(titleScreenHandler);
+        startButton.addActionListener(cHandler);
+        startButton.setActionCommand("start");
         panel.add(label);
         startButtonPanel.add(startButton);
         container.add(panel);
         container.add(startButtonPanel);
 
-    }
 
-    // Main game
-    public void mainGameScreen(){
-
-        // Setting title screen visibility to false
-        panel.setVisible(false);
-        startButtonPanel.setVisible(false);
-
-        // Setting panel for main text
-        JPanel mainTextPanel = new JPanel();
-        mainTextPanel.setBounds(100,100,600,250);
-        mainTextPanel.setBackground(Color.darkGray);
-        mainTextPanel.setBorder(BorderFactory.createLineBorder(Color.black));
-        container.add(mainTextPanel);
-
-        // Creating main text
-        mainTextPlace = new JTextArea("Welcome Brave Adventurer!\nYou wake up at a crossroad. Will you go left right?");
-        mainTextPlace.setBounds(100,100,600,250);
-        mainTextPlace.setBackground(Color.darkGray);
-        mainTextPlace.setForeground(Color.black);
-        //mainTextPlace.setBorder(BorderFactory.createLineBorder(Color.black));
-        mainTextPlace.setFont(mainText);
-        mainTextPlace.setLineWrap(true);
-        mainTextPanel.add(mainTextPlace);
-
-        // Setting panel for choice buttons
-        choiceButton = new JPanel();
-        choiceButton.setBounds(250,350,300,150);
-        choiceButton.setBackground(Color.gray);
-        choiceButton.setLayout(new GridLayout(2,1));
-        container.add(choiceButton);
-
-        // Creating choice buttons
-        choice1 = new JButton("Left");
-        choice1.setBackground(Color.black);
-        choice1.setForeground(Color.white);
-        choice1.setFont(choiceText);
-        choiceButton.add(choice1);
-
-        choice2 = new JButton("Continue");
-        choice2.setBackground(Color.black);
-        choice2.setForeground(Color.white);
-        choice2.setFont(choiceText);
-        choiceButton.add(choice2);
-
+        // Setting player HP and potion labels
         playerPanel = new JPanel();
-        playerPanel.setBounds(100,15,600,50);
+        playerPanel.setBounds(100, 15, 600, 50);
         playerPanel.setBackground(Color.white);
-        playerPanel.setLayout(new GridLayout(1,4));
+        playerPanel.setLayout(new GridLayout(1, 4));
         container.add(playerPanel);
 
         hpLabel = new JLabel("Health: ");
@@ -148,6 +112,7 @@ public class GUI {
         hpLabelNum.setForeground(Color.black);
         playerPanel.add(hpLabelNum);
 
+
         potionCapLabel = new JLabel("Potions: ");
         potionCapLabel.setFont(mainText);
         playerPanel.add(potionCapLabel);
@@ -157,46 +122,71 @@ public class GUI {
         potionCapNum.setForeground(Color.black);
         playerPanel.add(potionCapNum);
 
-        //
-    }
 
-    // Handler
-    public class TitleHandler implements ActionListener{
+        // Setting panel for main text
 
-        @Override
-        public void actionPerformed(ActionEvent e) {
-
-            mainGameScreen();
-        }
-    }
-
-    public static class SoundEffects {
-
-        public static void PlaySound(String filepath){
+        mainTextPanel.setBounds(100, 100, 600, 475);
+        mainTextPanel.setBackground(Color.darkGray);
+        mainTextPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+        container.add(mainTextPanel);
 
 
+        mainTextPlace = new JTextArea("This is main text area");
+        mainTextPlace.setBounds(100, 100, 600, 475);
+        mainTextPlace.setBackground(Color.darkGray);
+        mainTextPlace.setForeground(Color.black);
+        //mainTextPlace.setBorder(BorderFactory.createLineBorder(Color.black));
+        mainTextPlace.setFont(mainText);
+        mainTextPlace.setLineWrap(true);
+        mainTextPanel.add(mainTextPlace);
 
-            try{
+        // Setting panel for choice buttons
+        choiceButton = new JPanel();
+        choiceButton.setBounds(250, 575, 300, 150);
+        choiceButton.setBackground(Color.gray);
+        choiceButton.setLayout(new GridLayout(3, 1));
+        container.add(choiceButton);
 
-                File soundPath = new File(filepath);
+        // Creating choice buttons
+        choice1 = new JButton("choice1");
+        choice1.setBackground(Color.black);
+        choice1.setForeground(Color.white);
+        choice1.setFont(choiceText);
+        choiceButton.add(choice1);
+        choice1.setFocusPainted(false);
+        choice1.addActionListener(cHandler);
+        choice1.setActionCommand("ch1");
 
-                if(soundPath.exists()){
-                    AudioInputStream audioInput = AudioSystem.getAudioInputStream(soundPath);
-                    Clip clip = AudioSystem.getClip();
-                    clip.open(audioInput);
-                    clip.start();
+        choice2 = new JButton("choice2");
+        choice2.setBackground(Color.black);
+        choice2.setForeground(Color.white);
+        choice2.setFont(choiceText);
+        choiceButton.add(choice2);
+        choice2.setFocusPainted(false);
+        choice2.addActionListener(cHandler);
+        choice2.setActionCommand("ch2");
 
-                }
-                else{
-
-                    System.out.println("Cant find file");
-                }
-            }
-            catch(Exception ex){
-
-                ex.printStackTrace();
-            }
-        }
+        choice3 = new JButton("choice3");
+        choice3.setBackground(Color.black);
+        choice3.setForeground(Color.white);
+        choice3.setFont(choiceText);
+        choiceButton.add(choice3);
+        choice3.setFocusPainted(false);
+        choice3.addActionListener(cHandler);
+        choice3.setActionCommand("ch3");
 
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
