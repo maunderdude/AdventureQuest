@@ -10,8 +10,10 @@ import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
 
-public class GUI {
+public class GUI{
+
 
     // Fonts
     Font titleFont = new Font("Impact", Font.PLAIN, 70 );
@@ -44,6 +46,7 @@ public class GUI {
     JButton choice2 = new JButton();
     JButton choice3 = new JButton();
 
+
     // Text
     JTextArea mainTextPlace = new JTextArea();
 
@@ -52,11 +55,10 @@ public class GUI {
 
     Player player = new Player();
 
-    String position;
-
     // --------------------------------------------------------------------------------------------
 
-    public void createGUI(Game.ChoiceHandler cHandler) {
+    public void createGUI(Game.ChoiceHandler cHandler) throws IOException {
+
 
         // Creating frame for GUI
         frame.setSize(800, 800);
@@ -66,6 +68,8 @@ public class GUI {
         frame.setLayout(null);
         frame.setVisible(true);
         container = frame.getContentPane();
+        // ------------------ Image within JPanel (Not working correctly) ----------------------
+        // frame.getContentPane().add(new JPanelWithBackground("sample.jpeg"));
 
         // Set panel for Title
         panel.setBounds(100, 100, 600, 150);
@@ -157,6 +161,7 @@ public class GUI {
         choice1.addActionListener(cHandler);
         choice1.setActionCommand("ch1");
 
+
         choice2 = new JButton("choice2");
         choice2.setBackground(Color.black);
         choice2.setForeground(Color.white);
@@ -166,6 +171,7 @@ public class GUI {
         choice2.addActionListener(cHandler);
         choice2.setActionCommand("ch2");
 
+
         choice3 = new JButton("choice3");
         choice3.setBackground(Color.black);
         choice3.setForeground(Color.white);
@@ -174,6 +180,9 @@ public class GUI {
         choice3.setFocusPainted(false);
         choice3.addActionListener(cHandler);
         choice3.setActionCommand("ch3");
+
+
+
 
     }
 }

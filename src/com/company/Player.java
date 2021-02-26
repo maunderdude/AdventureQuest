@@ -2,16 +2,15 @@ package com.company;
 
 import java.util.Random;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 
 //class
 public class Player {
 
     // Variables
     String playerName;
-    int playerHealth = 20;
+    int playerHealth;
     int playerAttack;
-    int potionCapacity = 0;
+    int potionCapacity;
     int attackValues[] = {0, 1, 2, 3, 4, 5};
     int specialAttackValues[] = {0, 1, 2};
     int potion = 5;
@@ -120,8 +119,9 @@ public class Player {
         return playerHealth;
     }
 
-    public void setPlayerHealth(int playerHealth) {
+    public int setPlayerHealth(int playerHealth) {
         this.playerHealth = playerHealth;
+        return playerHealth;
     }
 
     public int getPlayerAttack() {
@@ -132,12 +132,14 @@ public class Player {
         this.playerAttack = playerAttack;
     }
 
-    public void getPotionCapacity() {
+    public int getPotionCapacity() {
         System.out.println("You have " + potionCapacity + " potions.");;
+        return 0;
     }
 
-    public void setPotionCapacity(int potionCapacity) {
+    public int setPotionCapacity(int potionCapacity) {
         this.potionCapacity = potionCapacity;
+        return potionCapacity;
     }
 
     public int getPotion() {

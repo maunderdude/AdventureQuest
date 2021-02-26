@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 
 
-public class Battle {
+public class Battle extends Game {
 
     GUI ui = new GUI();
     Enemy enemy = new Enemy("Skeleton", 5);
@@ -19,34 +19,63 @@ public class Battle {
     String fightingSound = "swordAttack.wav";
     String lightningSound = "specialAttack.wav";
 
+    Player player = new Player();
+    Game game = new Game();
+    Story story = new Story();
+
+    /*
 //---------------------------------------------------- Battle sequence ----------------------------------------------------
-/*
-    // Initial battle sequence
-    public void battle() {
 
-        enemy = new Enemy("Skeleton", 5);
+    // Switch to track position and link story elements with buttons
+    public void selectPosition(String position) {
 
+        switch (position) {
+            // ------------------------ Potion use -------------------------
+            case "attack":
+                attack();
+                break;
+            case "enemyAttack":
+                enemyAttack();
+                break;
+            case "winBattle":
+                winBattle();
+                break;
+            case "loseBattle":
+                loseBattle();
+                break;
+            case "toTitleScreen":
+                toTitleScreen();
+                break;
+            case "break":
+                break;
+
+        }
+    }
+
+  public void battle(Enemy enemy) {
+
+        //Main text in UI
         ui.mainTextPlace.setText("You run into a " + enemy.getType() + "!\n" + enemy.getType() + " HP: " + enemy.getEnemyHealth());
 
+        // Buttons
         ui.choice1.setText("Attack");
         ui.choice2.setText("Potion");
         ui.choice3.setText("-");
 
-        // Move to attack sequence
+        // button assign
         game.position1 = "attack";
         game.position2 = "";
         game.position3 = "";
 
     }
 
-    // Attack sequence
     public void attack() {
 
         // Assigning player attack value and re-assigning enemy health
         player.playerAttack = player.rand.nextInt(player.attackValues.length);
         enemy.enemyHealth = enemy.enemyHealth - player.getPlayerAttack();
 
-
+        //Main text in UI
         ui.mainTextPlace.setText("You attack for: " + player.playerAttack + "\n\n" + enemy.getType() + " HP: " + enemy.getEnemyHealth());
 
         // Statements to catch enemy death
@@ -55,77 +84,94 @@ public class Battle {
             ui.choice2.setText("-");
             ui.choice3.setText("-");
 
-            // Move to enemy attack sequence
+            // button assign
             game.position1 = "enemyAttack";
             game.position2 = "";
             game.position3 = "";
         } else {
-            ui.mainTextPlace.setText("You attack for: " + player.playerAttack + "\n\n" + enemy.getType() + " HP: 0" );
+            // Setting health to 0 to stop displaying negative numbers
+            ui.mainTextPlace.setText("You attack for: " + player.playerAttack + "\n\n" + enemy.getType() + " HP: 0");
+            // Buttons
             ui.choice1.setText(">");
             ui.choice2.setText("-");
             ui.choice3.setText("-");
 
-            // Move to win sequence
+            // button assign
             game.position1 = "winBattle";
             game.position2 = "";
             game.position3 = "";
         }
     }
 
-    // Enemy attack sequence
     public void enemyAttack(){
 
         // Assigning enemy attack value and re-assigning player health
         enemy.enemyAttack = enemy.rand.nextInt(enemy.attackValues.length);
         player.playerHealth = player.playerHealth - enemy.getEnemyAttack();
 
+
+        //Main text in UI
         ui.mainTextPlace.setText("The " + enemy.getType() + " attacks you for: " + enemy.getEnemyAttack());
+        // Re-assigning player health
         ui.hpLabelNum.setText(Integer.toString(player.getPlayerHealth()));
 
         // statements to catch player death
-        if(enemy.getEnemyHealth() > 0){
+        if(player.getPlayerHealth() > 0){
+            // Buttons
             ui.choice1.setText("Attack");
-            ui.choice2.setText("-");
+            ui.choice2.setText("Potion");
             ui.choice3.setText("-");
 
-            // Move to attack sequence
+            // button assign
             game.position1 = "attack";
             game.position2 = "";
             game.position3 = "";
         }
         else{
+            // Setting health to 0 to stop displaying negative numbers
+            ui.hpLabelNum.setText(Integer.toString(0));
+            // Buttons
             ui.choice1.setText(">");
             ui.choice2.setText("-");
             ui.choice3.setText("-");
 
-            // Move to lose sequence
+            // button assign
             game.position1 = "loseBattle";
             game.position2 = "";
             game.position3 = "";
         }
+
     }
 
-    // Win sequence
     public void winBattle(){
-        ui.mainTextPlace.setText("You have slain the enemy!");
 
+        //Main text in UI
+        ui.mainTextPlace.setText("You have slain the " + enemy.getType());
+
+
+        // Buttons
         ui.choice1.setText("Continue");
         ui.choice2.setText("-");
         ui.choice3.setText("-");
 
-        game.position1 = "";
+        // button assign
+        game.position1 = "break";
         game.position2 = "";
         game.position3 = "";
     }
 
-    // Lose sequence
+    // Lose sequence / player death
     public void loseBattle(){
+
+        //Main text in UI
         ui.mainTextPlace.setText("You are dead");
 
-        ui.choice1.setText("To Title Screen");
+        // Buttons
+        ui.choice1.setText("Menu");
         ui.choice2.setText("-");
         ui.choice3.setText("-");
 
+        // button assign
         game.position1 = "toTitleScreen";
         game.position2 = "";
         game.position3 = "";
@@ -134,11 +180,15 @@ public class Battle {
     // Return to title screen after death
     public void toTitleScreen() {
 
-        defaultSetup();
+        story.defaultSetup();
+        vm.showTitleScreen();
     }
 
- */
- // ----------------------------------------- Battle sequence end --------------------------------------------------------------
+
+     */
+
+
+    // ----------------------------------------- Battle sequence end --------------------------------------------------------------
 
 
     public void encounter(Player player, Enemy monster) {

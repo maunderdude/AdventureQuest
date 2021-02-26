@@ -1,6 +1,7 @@
 package com.company;
 
 
+import java.awt.event.ActionListener;
 import java.io.File;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -10,7 +11,7 @@ public class SoundEffects {
     public SoundEffects() {
     }
 
-    public static void PlaySound(String filepath) {
+    public static ActionListener PlaySound(String filepath) {
         try {
             File soundPath = new File(filepath);
             if (soundPath.exists()) {
@@ -25,5 +26,6 @@ public class SoundEffects {
             var4.printStackTrace();
         }
 
+        return null;
     }
 }
