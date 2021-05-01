@@ -12,6 +12,9 @@ public class Main {
 
 
 
+
+    // Text base version of game
+
        /*
         // Variables
         int trap = 5;

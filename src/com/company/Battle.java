@@ -52,7 +52,10 @@ public class Battle extends Game {
         }
     }
 
-  public void battle(Enemy enemy) {
+  public void battleTownFolk() {
+
+
+        enemy = new Enemy("Town Folk", 666);
 
         //Main text in UI
         ui.mainTextPlace.setText("You run into a " + enemy.getType() + "!\n" + enemy.getType() + " HP: " + enemy.getEnemyHealth());
@@ -60,20 +63,24 @@ public class Battle extends Game {
         // Buttons
         ui.choice1.setText("Attack");
         ui.choice2.setText("Potion");
-        ui.choice3.setText("-");
+        ui.choice3.setText("Special");
 
         // button assign
-        game.position1 = "attack";
-        game.position2 = "";
-        game.position3 = "";
+        game.position1 = "attackTownFolk";
+        game.position2 = "usePotionTownFolk";
+        game.position3 = "useSpecialTownFolk";
 
     }
 
-    public void attack() {
+    public void attackTownFolk() {
 
         // Assigning player attack value and re-assigning enemy health
-        player.playerAttack = player.rand.nextInt(player.attackValues.length);
+        player.playerAttack = player.rand.nextInt(player.attackValues.length) + 1;
         enemy.enemyHealth = enemy.enemyHealth - player.getPlayerAttack();
+
+        // Sound effect
+        clip = new SoundEffects();
+        clip.PlaySound("swordAttack.wav");
 
         //Main text in UI
         ui.mainTextPlace.setText("You attack for: " + player.playerAttack + "\n\n" + enemy.getType() + " HP: " + enemy.getEnemyHealth());
@@ -85,7 +92,7 @@ public class Battle extends Game {
             ui.choice3.setText("-");
 
             // button assign
-            game.position1 = "enemyAttack";
+            game.position1 = "enemyTownFolkAttack";
             game.position2 = "";
             game.position3 = "";
         } else {
@@ -97,18 +104,21 @@ public class Battle extends Game {
             ui.choice3.setText("-");
 
             // button assign
-            game.position1 = "winBattle";
+            game.position1 = "winTownFolkBattle";
             game.position2 = "";
             game.position3 = "";
         }
     }
 
-    public void enemyAttack(){
+    public void enemyTownFolkAttack(){
 
         // Assigning enemy attack value and re-assigning player health
         enemy.enemyAttack = enemy.rand.nextInt(enemy.attackValues.length);
         player.playerHealth = player.playerHealth - enemy.getEnemyAttack();
 
+        // Sound effect
+        clip = new SoundEffects();
+        clip.PlaySound("");
 
         //Main text in UI
         ui.mainTextPlace.setText("The " + enemy.getType() + " attacks you for: " + enemy.getEnemyAttack());
@@ -120,12 +130,12 @@ public class Battle extends Game {
             // Buttons
             ui.choice1.setText("Attack");
             ui.choice2.setText("Potion");
-            ui.choice3.setText("-");
+            ui.choice3.setText("Special");
 
             // button assign
-            game.position1 = "attack";
-            game.position2 = "";
-            game.position3 = "";
+            game.position1 = "attackTownFolk";
+            game.position2 = "usePotionTownFolk";
+            game.position3 = "useSpecialTownFolk";
         }
         else{
             // Setting health to 0 to stop displaying negative numbers
@@ -143,11 +153,14 @@ public class Battle extends Game {
 
     }
 
-    public void winBattle(){
+    public void winTownFolkBattle(){
 
         //Main text in UI
-        ui.mainTextPlace.setText("You have slain the " + enemy.getType());
+        ui.mainTextPlace.setText("");
 
+        // Sound effect
+        clip = new SoundEffects();
+        clip.PlaySound("winFight.wav");
 
         // Buttons
         ui.choice1.setText("Continue");
@@ -155,35 +168,129 @@ public class Battle extends Game {
         ui.choice3.setText("-");
 
         // button assign
-        game.position1 = "break";
+        game.position1 = "continueToMainStory11";
         game.position2 = "";
         game.position3 = "";
     }
 
-    // Lose sequence / player death
-    public void loseBattle(){
+    public void usePotionTownFolk(){
 
-        //Main text in UI
-        ui.mainTextPlace.setText("You are dead");
+        if (player.potionCapacity > 0) {
+            //Re-assigning player health
+            player.playerHealth += 5;
+            ui.hpLabelNum.setText(Integer.toString(player.getPlayerHealth()));
+            player.potionCapacity -= 1;
+            ui.potionCapNum.setText(Integer.toString(player.potionCapacity));
+
+            ui.mainTextPlace.setText("You use a potion!");
+
+
+        } else {
+            ui.mainTextPlace.setText("You have " + player.getPotionCapacity() + " potions.");
+
+        }
 
         // Buttons
-        ui.choice1.setText("Menu");
+        ui.choice1.setText("Attack");
+        ui.choice2.setText("Potion");
+        ui.choice3.setText("Special");
+
+        // Button assign
+        game.position1 = "attackTownFolk";
+        game.position2 = "usePotionTownFolk";
+        game.position3 = "useSpecialTownFolk";
+    }
+
+    public void useSpecialTownFolk(){
+
+        //Main text in UI
+        ui.mainTextPlace.setText("The sky growls and lights up." +
+                "\n\nA blue surge runs through your veins." +
+                "\n\nYou throw your sword into the air.");
+
+
+        // Buttons
+        ui.choice1.setText("Strike");
         ui.choice2.setText("-");
         ui.choice3.setText("-");
 
         // button assign
-        game.position1 = "toTitleScreen";
+        game.position1 = "useSpecialTownFolk2";
         game.position2 = "";
         game.position3 = "";
     }
 
-    // Return to title screen after death
-    public void toTitleScreen() {
+    public void useSpecialTownFolk2(){
 
-        story.defaultSetup();
-        vm.showTitleScreen();
+        //Main text in UI
+        ui.mainTextPlace.setText("You catch your sword and slam it into the ground." +
+                "\n\nLightning comes crashing down around you.");
+
+        // Sound effect
+        clip = new SoundEffects();
+        clip.PlaySound("specialAttack.wav");
+
+        // Buttons
+        ui.choice1.setText(">");
+        ui.choice2.setText("-");
+        ui.choice3.setText("-");
+
+        // button assign
+        game.position1 = "specialAttackResultTownFolk";
+        game.position2 = "";
+        game.position3 = "";
     }
 
+    public void specialAttackResultTownFolk() {
+
+        if(player.specialAttack == 0){
+
+
+            //Main text in UI
+            ui.mainTextPlace.setText("The enemy has been obliterated.");
+
+            // Buttons
+            ui.choice1.setText("Continue");
+            ui.choice2.setText("-");
+            ui.choice3.setText("-");
+
+            // button assign
+            game.position1 = "continueToMainStory11";
+            game.position2 = "";
+            game.position3 = "";
+        }
+        else if(player.specialAttack == 1){
+
+            //Main text in UI
+            ui.mainTextPlace.setText("The enemy has been obliterated.");
+
+            // Buttons
+            ui.choice1.setText("Continue");
+            ui.choice2.setText("-");
+            ui.choice3.setText("-");
+
+            // button assign
+            game.position1 = "continueToMainStory11";
+            game.position2 = "";
+            game.position3 = "";
+        }
+        else{
+            //Main text in UI
+            ui.mainTextPlace.setText("The enemy has been obliterated.");
+
+            // Buttons
+            ui.choice1.setText("Continue");
+            ui.choice2.setText("-");
+            ui.choice3.setText("-");
+
+            // button assign
+            game.position1 = "continueToMainStory11";
+            game.position2 = "";
+            game.position3 = "";
+        }
+
+
+    }
 
      */
 
