@@ -390,7 +390,7 @@ public class Main {
                 System.out.println("It lifts up clean off it's feet and flies through the air");
                 System.out.println("Press enter");
                 scan.nextLine();
-                System.out.println("--------------------------************--------------------------------");
+                System.out.println("----------------*----------************--------------------------------");
                 System.out.println("The nearest enemy brings its club crashing down on you!");
 
                 // Re-assigning true

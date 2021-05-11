@@ -11,6 +11,7 @@ public class Player {
     int playerHealth;
     int playerAttack;
     int potionCapacity;
+    int necklaceOfLife = 0;
     int attackValues[] = {0, 1, 2, 3, 4, 5};
     int specialAttackValues[] = {0, 1, 2};
     int potion = 5;
@@ -30,6 +31,8 @@ public class Player {
 
     }
 
+    /*
+    // Sequential potion use and special attack use (Not being used)
 
     public void usePotion(){
         boolean testBoolean = true;
@@ -100,7 +103,7 @@ public class Player {
 
     }
 
-
+*/
 
 
 

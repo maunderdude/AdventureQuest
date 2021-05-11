@@ -68,6 +68,7 @@ public class GUI{
         frame.setLayout(null);
         frame.setVisible(true);
         container = frame.getContentPane();
+        frame.setResizable(false);
         // ------------------ Image within JPanel (Not working correctly) ----------------------
         // frame.getContentPane().add(new JPanelWithBackground("sample.jpeg"));
 
