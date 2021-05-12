@@ -15,6 +15,7 @@ public class Player {
     int necklaceOfLife = 0;
     int savedElla = 0;
     int godStatus = 0;
+    int playerSoul = 1;
     int shadowyFigure = 0;
     int attackValues[] = {0, 1, 2, 3, 4, 5};
     int specialAttackValues[] = {0, 1, 2};
@@ -203,6 +204,14 @@ public class Player {
 
     public void setGodStatus(int godStatus) {
         this.godStatus = godStatus;
+    }
+
+    public int getPlayerSoul() {
+        return playerSoul;
+    }
+
+    public void setPlayerSoul(int playerSoul) {
+        this.playerSoul = playerSoul;
     }
 }
 
