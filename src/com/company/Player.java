@@ -9,9 +9,13 @@ public class Player {
     // Variables
     String playerName;
     int playerHealth;
+    int playerMaxHealth;
     int playerAttack;
     int potionCapacity;
     int necklaceOfLife = 0;
+    int savedElla = 0;
+    int godStatus = 0;
+    int shadowyFigure = 0;
     int attackValues[] = {0, 1, 2, 3, 4, 5};
     int specialAttackValues[] = {0, 1, 2};
     int potion = 5;
@@ -159,6 +163,46 @@ public class Player {
 
     public void setSpecialAttack(int specialAttack) {
         this.specialAttack = specialAttack;
+    }
+
+    public int getPlayerMaxHealth() {
+        return playerMaxHealth;
+    }
+
+    public void setPlayerMaxHealth(int playerMaxHealth) {
+        this.playerMaxHealth = playerMaxHealth;
+    }
+
+    public int getNecklaceOfLife() {
+        return necklaceOfLife;
+    }
+
+    public void setNecklaceOfLife(int necklaceOfLife) {
+        this.necklaceOfLife = necklaceOfLife;
+    }
+
+    public int getSavedElla() {
+        return savedElla;
+    }
+
+    public void setSavedElla(int savedElla) {
+        this.savedElla = savedElla;
+    }
+
+    public int getShadowyFigure() {
+        return shadowyFigure;
+    }
+
+    public void setShadowyFigure(int shadowyFigure) {
+        this.shadowyFigure = shadowyFigure;
+    }
+
+    public int getGodStatus() {
+        return godStatus;
+    }
+
+    public void setGodStatus(int godStatus) {
+        this.godStatus = godStatus;
     }
 }
 
