@@ -12,16 +12,20 @@ public class Player {
     int playerMaxHealth;
     int playerAttack;
     int potionCapacity;
-    int necklaceOfLife = 0;
-    int savedElla = 0;
-    int godStatus = 0;
-    int playerSoul = 1;
-    int shadowyFigure = 0;
     int attackValues[] = {0, 1, 2, 3, 4, 5};
     int specialAttackValues[] = {0, 1, 2};
     int potion = 5;
     boolean upgradeAttack = false;
     boolean upgradeSpecial = false;
+
+    // story element variables
+    int necklaceOfLife = 0;
+    int savedElla = 0;
+    int godStatus = 0;
+    int playerSoul = 0;
+    int shadowyFigure = 0;
+    int defeatGuardian = 0;
+    int witchCounter = 0;
 
     Scanner scan = new Scanner(System.in);
     Random rand = new Random();
@@ -212,6 +216,22 @@ public class Player {
 
     public void setPlayerSoul(int playerSoul) {
         this.playerSoul = playerSoul;
+    }
+
+    public int getDefeatGuardian() {
+        return defeatGuardian;
+    }
+
+    public void setDefeatGuardian(int defeatGuardian) {
+        this.defeatGuardian = defeatGuardian;
+    }
+
+    public int getWitchCounter() {
+        return witchCounter;
+    }
+
+    public void setWitchCounter(int witchCounter) {
+        this.witchCounter = witchCounter;
     }
 }
 

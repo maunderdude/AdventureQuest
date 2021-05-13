@@ -1,5 +1,7 @@
 package com.company;
 
+import javax.sound.sampled.Clip;
+
 public class Story {
 
     // Objects
@@ -31,6 +33,14 @@ public class Story {
         // Setting player health and potion capacity within the UI
         ui.hpLabelNum.setText(Integer.toString(player.setPlayerHealth(player.getPlayerMaxHealth())));
         ui.potionCapNum.setText(Integer.toString(player.setPotionCapacity(0)));
+
+        player.setWitchCounter(0);
+        player.setDefeatGuardian(0);
+        player.setGodStatus(0);
+        player.setSavedElla(0);
+        player.setNecklaceOfLife(0);
+        player.setPlayerSoul(0);
+        player.setShadowyFigure(0);
 
 
     }
@@ -222,7 +232,7 @@ public class Story {
             case "continueToMainStory12City":
                 mainStory12City();
                 break;
-                // City
+            // City
             case "continueToCity":
                 continueToCity();
                 break;
@@ -301,12 +311,18 @@ public class Story {
             case "innerCityHordeSpecialResult":
                 innerCityHordeSpecialResult();
                 break;
-                // undead battle--------
+            case "innerCityHordeDefeat":
+                innerCityHordeDefeat();
+                break;
+            // undead battle--------
             case "cityUndeadBattle":
                 cityUndeadBattle();
                 break;
             case "attackUndead":
                 attackUndead();
+                break;
+            case "undeadAttack":
+                undeadAttack();
                 break;
             case "useSpecialUndead":
                 useSpecialUndead();
@@ -326,7 +342,7 @@ public class Story {
             case "usePotionUndead":
                 usePotionUndead();
                 break;
-                // troll battle -----------
+            // troll battle -----------
             case "cityTrollBattle":
                 cityTrollBattle();
                 break;
@@ -393,7 +409,7 @@ public class Story {
             case "leaveCityLeaveChurch":
                 leaveCityLeaveChurch();
                 break;
-                // Village
+            // Village
             case "continueToMainStory12Village":
                 villageEdge();
                 break;
@@ -621,8 +637,53 @@ public class Story {
             case "attackEnt":
                 attackEnt();
                 break;
+            case "usePotionEnt":
+                usePotionEnt();
+                break;
+            case "winEntBattle":
+                winEntBattle();
+                break;
+            case "useSpecialEnt":
+                useSpecialEnt();
+                break;
+            case "useSpecialEnt2":
+                useSpecialEnt2();
+                break;
+            case "specialEntResult":
+                specialEntResult();
+                break;
             case "entRun":
                 entRun();
+                break;
+            case "entRunCrossRoad":
+                entRunCrossRoad();
+                break;
+            case "witchesHut":
+                witchesHut();
+                break;
+            case "hutKnock1":
+                hutKnock1();
+                break;
+            case "hutKnock2":
+                hutKnock2();
+                break;
+            case "hutKnock3":
+                hutKnock3();
+                break;
+            case "witchesHutAnswer":
+                witchesHutAnswer();
+                break;
+            case "witchesConvo":
+                witchesConvo();
+                break;
+            case "witchesConvo2":
+                witchesConvo2();
+                break;
+            case "witchesNecklace":
+                witchesNecklace();
+                break;
+            case "necklaceCrossRoad":
+                necklaceCrossRoad();
                 break;
             case "crossRoadLeft":
                 crossRoadLeft();
@@ -658,6 +719,7 @@ public class Story {
 
     public void potionCollectStore() {
 
+
         //Main text in UI
         ui.mainTextPlace.setText("You find a potion!");
 
@@ -679,11 +741,9 @@ public class Story {
     }
 
 
-
-
     // --------------------------- Player death ----------------------------------------
     // Lose sequence / player death
-    public void loseBattle(){
+    public void loseBattle() {
 
         //Main text in UI
         ui.mainTextPlace.setText("You are dead");
@@ -712,6 +772,9 @@ public class Story {
 
     // ----------------------------------- Main Story Intro ----------------------------------------------
     public void mainStoryIntro() {
+
+        clip = new SoundEffects();
+        clip.PlaySound("");
 
         //Main text in UI
         ui.mainTextPlace.setText("This tale begins in the region of Zanarkand, in\nyour home village, Hill Tale." +
@@ -816,7 +879,7 @@ public class Story {
         game.position3 = "-";
     }
 
-    public void story5Continue(){
+    public void story5Continue() {
 
         //Main text in UI
         ui.mainTextPlace.setText("You continue on for some time until the path" +
@@ -892,7 +955,7 @@ public class Story {
                 "\n\nYou lose 1 health.");
 
         //Re-assigning player health after damage
-        player.playerHealth = player.playerHealth -1;
+        player.playerHealth = player.playerHealth - 1;
         //Re-assigning health in the UI
         ui.hpLabelNum.setText(Integer.toString(player.getPlayerHealth()));
 
@@ -911,7 +974,7 @@ public class Story {
     public void battleWolf() {
         // Sound effect
         clip = new SoundEffects();
-        clip.PlaySound("");
+        clip.PlaySound("wolfNoise.wav");
 
         enemy = new Enemy("Wolf", 2);
 
@@ -968,7 +1031,7 @@ public class Story {
         }
     }
 
-    public void enemyWolfAttack(){
+    public void enemyWolfAttack() {
 
         // Assigning enemy attack value and re-assigning player health
         enemy.enemyAttack = enemy.rand.nextInt(enemy.attackValues.length);
@@ -976,7 +1039,7 @@ public class Story {
 
         // Sound effect
         clip = new SoundEffects();
-        clip.PlaySound("");
+        clip.PlaySound("wolfNoise.wav");
 
         //Main text in UI
         ui.mainTextPlace.setText("The " + enemy.getType() + " attacks you for: " + enemy.getEnemyAttack());
@@ -984,7 +1047,7 @@ public class Story {
         ui.hpLabelNum.setText(Integer.toString(player.getPlayerHealth()));
 
         // statements to catch player death
-        if(player.getPlayerHealth() > 0){
+        if (player.getPlayerHealth() > 0) {
             // Buttons
             ui.choice1.setText("Attack");
             ui.choice2.setText("Potion");
@@ -994,8 +1057,7 @@ public class Story {
             game.position1 = "attackWolf";
             game.position2 = "usePotionWolf";
             game.position3 = "";
-        }
-        else{
+        } else {
             // Setting health to 0 to stop displaying negative numbers
             ui.hpLabelNum.setText(Integer.toString(0));
             // Buttons
@@ -1011,7 +1073,7 @@ public class Story {
 
     }
 
-    public void winWolfBattle(){
+    public void winWolfBattle() {
 
         //Main text in UI
         ui.mainTextPlace.setText("You have slain the " + enemy.getType());
@@ -1031,7 +1093,7 @@ public class Story {
         game.position3 = "";
     }
 
-    public void usePotionWolf(){
+    public void usePotionWolf() {
 
         if (player.potionCapacity > 0) {
             //Re-assigning player health
@@ -1167,7 +1229,8 @@ public class Story {
     }
 
     // Enemy attack sequence
-    public void enemyZomAttack(){
+    public void enemyZomAttack() {
+
 
         // Assigning enemy attack value and re-assigning player health
         enemy.enemyAttack = enemy.rand.nextInt(enemy.attackValues.length);
@@ -1183,7 +1246,7 @@ public class Story {
         clip.PlaySound("zombieGrunt.wav");
 
         // statements to catch player death
-        if(player.getPlayerHealth() > 0){
+        if (player.getPlayerHealth() > 0) {
 
             // Buttons
             ui.choice1.setText("Attack");
@@ -1194,8 +1257,7 @@ public class Story {
             game.position1 = "attackZom";
             game.position2 = "usePotionZom";
             game.position3 = "";
-        }
-        else{
+        } else {
             // Setting health to 0 to stop it showing negative numbers
             ui.hpLabelNum.setText(Integer.toString(0));
             // Buttons
@@ -1213,7 +1275,7 @@ public class Story {
 
 
     // Win sequence
-    public void winZomBattle(){
+    public void winZomBattle() {
 
         //Main text in UI
         ui.mainTextPlace.setText("You have slain the " + enemy.getType());
@@ -1233,7 +1295,9 @@ public class Story {
         game.position3 = "";
     }
 
-    public void usePotionZom(){
+    public void usePotionZom() {
+
+
 
         if (player.potionCapacity > 0) {
             //Re-assigning player health
@@ -1243,6 +1307,9 @@ public class Story {
             ui.potionCapNum.setText(Integer.toString(player.potionCapacity));
 
             ui.mainTextPlace.setText("You use a potion!");
+
+            clip = new SoundEffects();
+            clip.PlaySound("potionCollect.wav");
 
 
         } else {
@@ -1374,9 +1441,9 @@ public class Story {
                 "\nyou see the watchtower has been wrecked. It" +
                 "\nlooks like a fight has gone on here." +
                 "\n\nYou climb through the window and drop to the" +
-                "\nfloor. There is a huge crash!"+
+                "\nfloor. There is a huge crash!" +
                 "\n\nThe damaged floor gives way beneath you and" +
-                "\nyou fall into the castle keep."+
+                "\nyou fall into the castle keep." +
                 "\n\nYou lose 2 health.");
 
         // Re-assigning player health
@@ -1444,29 +1511,37 @@ public class Story {
     // ----------------------------------- Main Story 9 ----------------------------------------------
     public void mainStory9() {
 
+
+            clip = new SoundEffects();
+            clip.PlaySound("evilPresence6.wav");
+
+
         //Main text in UI
-        ui.mainTextPlace.setText("You head into the castle." +
-                "" +
-                "\n\nYou walk through the narrow halls and enter the main chamber room." +
-                "\n\nThe room is huge and cold.." +
-                "\n\nThe pillars tower above you." +
-                "\n\nYou see the throne ahead of you." +
-                "\n\nSomeone is sat in it..." +
-                "\n\n'Is it the king?!'");
+            ui.mainTextPlace.setText("You head into the castle." +
+                    "\n\nYou walk through the narrow halls and enter the main chamber room." +
+                    "\n\nThe room is huge and cold.." +
+                    "\n\nThe pillars tower above you." +
+                    "\n\nYou see the throne ahead of you." +
+                    "\n\nSomeone is sat in it..." +
+                    "\n\n'Is it the king?!'");
 
-        // Buttons
-        ui.choice1.setText("Forward");
-        ui.choice2.setText("-");
-        ui.choice3.setText("-");
+            // Buttons
+            ui.choice1.setText("Forward");
+            ui.choice2.setText("-");
+            ui.choice3.setText("-");
 
-        // button assign
-        game.position1 = "story9Forward";
-        game.position2 = "";
-        game.position3 = "";
+            // button assign
+            game.position1 = "story9Forward";
+            game.position2 = "";
+            game.position3 = "";
+
 
     }
 
     public void story9Forward() {
+
+        clip = new SoundEffects();
+        clip.PlaySound("evilPresence6.wav");
 
         //Main text in UI
         ui.mainTextPlace.setText("As you get closer you notice it is the King but" +
@@ -1490,6 +1565,9 @@ public class Story {
 
     public void story9Speak() {
 
+        clip = new SoundEffects();
+        clip.PlaySound("evilPresence6.wav");
+
         //Main text in UI
         ui.mainTextPlace.setText("'Your grace, are you alright?! What has happened here?!'" +
                 "\n\nThe Kings jaw pops to the left and hangs down." +
@@ -1507,7 +1585,6 @@ public class Story {
         game.position3 = "";
 
     }
-
 
 
     public void battleDeadKing() {
@@ -1571,7 +1648,7 @@ public class Story {
         }
     }
 
-    public void enemyDeadKingAttack(){
+    public void enemyDeadKingAttack() {
 
         // Assigning enemy attack value and re-assigning player health
         enemy.enemyAttack = enemy.rand.nextInt(enemy.attackValues.length);
@@ -1579,7 +1656,7 @@ public class Story {
 
         // Sound effect
         clip = new SoundEffects();
-        clip.PlaySound("");
+        clip.PlaySound("zombieGrunt.wav");
 
         //Main text in UI
         ui.mainTextPlace.setText("The " + enemy.getType() + " attacks you for: " + enemy.getEnemyAttack());
@@ -1587,7 +1664,7 @@ public class Story {
         ui.hpLabelNum.setText(Integer.toString(player.getPlayerHealth()));
 
         // statements to catch player death
-        if(player.getPlayerHealth() > 0){
+        if (player.getPlayerHealth() > 0) {
             // Buttons
             ui.choice1.setText("Attack");
             ui.choice2.setText("Potion");
@@ -1597,8 +1674,7 @@ public class Story {
             game.position1 = "attackDeadKing";
             game.position2 = "usePotionDeadKing";
             game.position3 = "";
-        }
-        else{
+        } else {
             // Setting health to 0 to stop displaying negative numbers
             ui.hpLabelNum.setText(Integer.toString(0));
             // Buttons
@@ -1614,7 +1690,7 @@ public class Story {
 
     }
 
-    public void winDeadKingBattle(){
+    public void winDeadKingBattle() {
 
         //Main text in UI
         ui.mainTextPlace.setText("You have slain the " + enemy.getType() +
@@ -1637,7 +1713,7 @@ public class Story {
         game.position3 = "";
     }
 
-    public void usePotionDeadKing(){
+    public void usePotionDeadKing() {
 
         if (player.potionCapacity > 0) {
             //Re-assigning player health
@@ -1665,7 +1741,7 @@ public class Story {
         game.position3 = "";
     }
 
-    public void deadKingLoot(){
+    public void deadKingLoot() {
 
         clip = new SoundEffects();
         clip.PlaySound("");
@@ -1744,6 +1820,7 @@ public class Story {
 
     public void story10Lightning() {
 
+
         //Main text in UI
         ui.mainTextPlace.setText("As you head for the keep exit the sky flashes.." +
                 "\n\nLightning crashes down and strikes you!" +
@@ -1770,8 +1847,8 @@ public class Story {
                 "\n\nYou stand up, feeling surprisingly energized." +
                 "\n\nA blue surge rushes through your hand." +
                 "\n\nAs you stand up you notice you are slowly being" +
-                "\nsurrounded by the town folk," +
-                "\nor so they used to be." +
+                "\nsurrounded by the town folk, or so they used to" +
+                "\nsbe." +
                 "\n\nThis is one fight you cannot win...");
 
         // Re-assigning player health
@@ -1791,11 +1868,12 @@ public class Story {
     }
 
 
-
     public void battleTownFolk() {
 
 
         enemy = new Enemy("Town Folk", 666);
+        clip = new SoundEffects();
+        clip.PlaySound("zombieNoise.wav");
 
         //Main text in UI
         ui.mainTextPlace.setText("You run into a " + enemy.getType() + "!\n" + enemy.getType() + " HP: " + enemy.getEnemyHealth());
@@ -1850,7 +1928,7 @@ public class Story {
         }
     }
 
-    public void enemyTownFolkAttack(){
+    public void enemyTownFolkAttack() {
 
         // Assigning enemy attack value and re-assigning player health
         enemy.enemyAttack = enemy.rand.nextInt(enemy.attackValues.length);
@@ -1866,7 +1944,7 @@ public class Story {
         ui.hpLabelNum.setText(Integer.toString(player.getPlayerHealth()));
 
         // statements to catch player death
-        if(player.getPlayerHealth() > 0){
+        if (player.getPlayerHealth() > 0) {
             // Buttons
             ui.choice1.setText("Attack");
             ui.choice2.setText("Potion");
@@ -1876,8 +1954,7 @@ public class Story {
             game.position1 = "attackTownFolk";
             game.position2 = "usePotionTownFolk";
             game.position3 = "useSpecialTownFolk";
-        }
-        else{
+        } else {
             // Setting health to 0 to stop displaying negative numbers
             ui.hpLabelNum.setText(Integer.toString(0));
             // Buttons
@@ -1893,7 +1970,7 @@ public class Story {
 
     }
 
-    public void winTownFolkBattle(){
+    public void winTownFolkBattle() {
 
         //Main text in UI
         ui.mainTextPlace.setText("");
@@ -1913,7 +1990,7 @@ public class Story {
         game.position3 = "";
     }
 
-    public void usePotionTownFolk(){
+    public void usePotionTownFolk() {
 
         if (player.potionCapacity > 0) {
             //Re-assigning player health
@@ -1941,7 +2018,7 @@ public class Story {
         game.position3 = "useSpecialTownFolk";
     }
 
-    public void useSpecialTownFolk(){
+    public void useSpecialTownFolk() {
 
         //Main text in UI
         ui.mainTextPlace.setText("The sky growls and lights up." +
@@ -1960,7 +2037,7 @@ public class Story {
         game.position3 = "";
     }
 
-    public void useSpecialTownFolk2(){
+    public void useSpecialTownFolk2() {
 
         //Main text in UI
         ui.mainTextPlace.setText("You catch your sword and slam it into the ground." +
@@ -1984,7 +2061,7 @@ public class Story {
     // Special attack Random decider (Guaranteed to be successful this instance)
     public void specialAttackResultTownFolk() {
 
-        if(player.specialAttack == 0){
+        if (player.specialAttack == 0) {
 
 
             //Main text in UI
@@ -1999,8 +2076,7 @@ public class Story {
             game.position1 = "continueToMainStory11";
             game.position2 = "";
             game.position3 = "";
-        }
-        else if(player.specialAttack == 1){
+        } else if (player.specialAttack == 1) {
 
             //Main text in UI
             ui.mainTextPlace.setText("The enemy has been obliterated.");
@@ -2014,8 +2090,7 @@ public class Story {
             game.position1 = "continueToMainStory11";
             game.position2 = "";
             game.position3 = "";
-        }
-        else{
+        } else {
             //Main text in UI
             ui.mainTextPlace.setText("The enemy has been obliterated.");
 
@@ -2146,7 +2221,7 @@ public class Story {
 
     }
 
-    public void villageInvestigate () {
+    public void villageInvestigate() {
 
         //Main text in UI
         ui.mainTextPlace.setText("'I have a bad feeling about this...'" +
@@ -2275,7 +2350,7 @@ public class Story {
         }
     }
 
-    public void undeadChildAttack(){
+    public void undeadChildAttack() {
 
         // Assigning enemy attack value and re-assigning player health
         enemy.enemyAttack = enemy.rand.nextInt(enemy.attackValues.length);
@@ -2291,7 +2366,7 @@ public class Story {
         ui.hpLabelNum.setText(Integer.toString(player.getPlayerHealth()));
 
         // statements to catch player death
-        if(player.getPlayerHealth() > 0){
+        if (player.getPlayerHealth() > 0) {
             // Buttons
             ui.choice1.setText("Attack");
             ui.choice2.setText("Potion");
@@ -2301,8 +2376,7 @@ public class Story {
             game.position1 = "attackUndeadChild";
             game.position2 = "usePotionUndeadChild";
             game.position3 = "useSpecialUndeadChild";
-        }
-        else{
+        } else {
             // Setting health to 0 to stop displaying negative numbers
             ui.hpLabelNum.setText(Integer.toString(0));
             // Buttons
@@ -2318,7 +2392,7 @@ public class Story {
 
     }
 
-    public void winUndeadChildBattle(){
+    public void winUndeadChildBattle() {
 
         //Main text in UI
         ui.mainTextPlace.setText("You have slain the " + enemy.getType());
@@ -2339,7 +2413,7 @@ public class Story {
         game.position3 = "";
     }
 
-    public void usePotionUndeadChild(){
+    public void usePotionUndeadChild() {
 
         if (player.potionCapacity > 0) {
             //Re-assigning player health
@@ -2367,7 +2441,7 @@ public class Story {
         game.position3 = "useSpecialUndeadChild";
     }
 
-    public void useSpecialUndeadChild(){
+    public void useSpecialUndeadChild() {
 
         //Main text in UI
         ui.mainTextPlace.setText("The sky growls and lights up." +
@@ -2386,7 +2460,7 @@ public class Story {
         game.position3 = "";
     }
 
-    public void useSpecialUndeadChild2(){
+    public void useSpecialUndeadChild2() {
 
         //Main text in UI
         ui.mainTextPlace.setText("You catch your sword and slam it into the ground." +
@@ -2410,7 +2484,7 @@ public class Story {
     // Special attack Random decider (Guaranteed to be successful this instance)
     public void specialUndeadChildResult() {
 
-        if(player.specialAttack == 0){
+        if (player.specialAttack == 0) {
 
 
             //Main text in UI
@@ -2425,8 +2499,7 @@ public class Story {
             game.position1 = "villageWinChildBattle";
             game.position2 = "";
             game.position3 = "";
-        }
-        else if(player.specialAttack == 1){
+        } else if (player.specialAttack == 1) {
 
             //Main text in UI
             ui.mainTextPlace.setText("The enemy has been obliterated.");
@@ -2440,8 +2513,7 @@ public class Story {
             game.position1 = "loseBattle";
             game.position2 = "";
             game.position3 = "";
-        }
-        else{
+        } else {
             //Main text in UI
             ui.mainTextPlace.setText("The enemy has been obliterated.");
 
@@ -2459,7 +2531,7 @@ public class Story {
 
     }
 
-    public void villageWinChildBattle(){
+    public void villageWinChildBattle() {
 
         //Main text in UI
         ui.mainTextPlace.setText("'That was just a child! Does this evil have no" +
@@ -2572,7 +2644,7 @@ public class Story {
 
     }
 
-    public void houseSpecial(){
+    public void houseSpecial() {
 
         //Main text in UI
         ui.mainTextPlace.setText("The sky growls and lights up." +
@@ -2591,7 +2663,7 @@ public class Story {
         game.position3 = "";
     }
 
-    public void houseSpecial2(){
+    public void houseSpecial2() {
 
         //Main text in UI
         ui.mainTextPlace.setText("You catch your sword and slam it into the ground." +
@@ -2615,7 +2687,7 @@ public class Story {
     // Special attack Random decider (Guaranteed to be successful this instance)
     public void houseSpecialResult() {
 
-        if(player.specialAttack == 0){
+        if (player.specialAttack == 0) {
 
 
             //Main text in UI
@@ -2630,8 +2702,7 @@ public class Story {
             game.position1 = "houseAfterSpecial";
             game.position2 = "";
             game.position3 = "";
-        }
-        else if(player.specialAttack == 1){
+        } else if (player.specialAttack == 1) {
 
             //Main text in UI
             ui.mainTextPlace.setText("You, and the house have been obliterated.");
@@ -2645,8 +2716,7 @@ public class Story {
             game.position1 = "loseBattle";
             game.position2 = "";
             game.position3 = "";
-        }
-        else{
+        } else {
             //Main text in UI
             ui.mainTextPlace.setText("The house has been obliterated.");
 
@@ -2834,7 +2904,7 @@ public class Story {
         }
     }
 
-    public void villageFightAttack(){
+    public void villageFightAttack() {
 
         // Assigning enemy attack value and re-assigning player health
         enemy.enemyAttack = enemy.rand.nextInt(enemy.attackValues.length);
@@ -2850,7 +2920,7 @@ public class Story {
         ui.hpLabelNum.setText(Integer.toString(player.getPlayerHealth()));
 
         // statements to catch player death
-        if(player.getPlayerHealth() > 0){
+        if (player.getPlayerHealth() > 0) {
             // Buttons
             ui.choice1.setText("Attack");
             ui.choice2.setText("Potion");
@@ -2860,8 +2930,7 @@ public class Story {
             game.position1 = "attackVillageFight";
             game.position2 = "usePotionVillageFight";
             game.position3 = "useSpecialVillageFight";
-        }
-        else{
+        } else {
             // Setting health to 0 to stop displaying negative numbers
             ui.hpLabelNum.setText(Integer.toString(0));
             // Buttons
@@ -2877,7 +2946,7 @@ public class Story {
 
     }
 
-    public void winVillageFightBattle(){
+    public void winVillageFightBattle() {
 
         //Main text in UI
         ui.mainTextPlace.setText("");
@@ -2898,7 +2967,7 @@ public class Story {
         game.position3 = "";
     }
 
-    public void usePotionVillageFight(){
+    public void usePotionVillageFight() {
 
         if (player.potionCapacity > 0) {
             //Re-assigning player health
@@ -2926,7 +2995,7 @@ public class Story {
         game.position3 = "useSpecialVillageFight";
     }
 
-    public void useSpecialVillageFight(){
+    public void useSpecialVillageFight() {
 
         //Main text in UI
         ui.mainTextPlace.setText("The sky growls and lights up." +
@@ -2945,7 +3014,7 @@ public class Story {
         game.position3 = "";
     }
 
-    public void useSpecialVillageFight2(){
+    public void useSpecialVillageFight2() {
 
         //Main text in UI
         ui.mainTextPlace.setText("You catch your sword and slam it into the ground." +
@@ -2969,7 +3038,7 @@ public class Story {
 
     public void specialVillageFightResult() {
 
-        if(player.specialAttack == 0){
+        if (player.specialAttack == 0) {
 
 
             //Main text in UI
@@ -2984,8 +3053,7 @@ public class Story {
             game.position1 = "villageStory";
             game.position2 = "";
             game.position3 = "";
-        }
-        else if(player.specialAttack == 1){
+        } else if (player.specialAttack == 1) {
 
             //Main text in UI
             ui.mainTextPlace.setText("The enemy has been obliterated.");
@@ -2999,8 +3067,7 @@ public class Story {
             game.position1 = "villageStory";
             game.position2 = "";
             game.position3 = "";
-        }
-        else{
+        } else {
             //Main text in UI
             ui.mainTextPlace.setText("The enemy has been obliterated.");
 
@@ -3025,7 +3092,7 @@ public class Story {
 
         //Main text in UI
         ui.mainTextPlace.setText("There are too many of them, they keep coming." +
-                "\n\nEnemy remaining: " + enemyRemaining );
+                "\n\nEnemy remaining: " + enemyRemaining);
 
         // Buttons
         ui.choice1.setText(">");
@@ -3133,6 +3200,7 @@ public class Story {
         game.position3 = "";
 
     }
+
     public void villageStoryCitizenCall2() {
 
         //Main text in UI
@@ -3262,6 +3330,7 @@ public class Story {
 
 
     }
+
     public void villageStoryCitizenEnd() {
 
         //Main text in UI
@@ -3439,7 +3508,7 @@ public class Story {
 
     }
 
-    public void nothing () {
+    public void nothing() {
 
         //Main text in UI
         ui.mainTextPlace.setText("You travel along the path to the village.");
@@ -3457,8 +3526,7 @@ public class Story {
     }
 
 
-
-    public void villageIgnore () {
+    public void villageIgnore() {
 
         //Main text in UI
         ui.mainTextPlace.setText("You decide to ignore it and head into the local" +
@@ -3523,6 +3591,9 @@ public class Story {
 
     public void villageStoreTake2() {
 
+        clip = new SoundEffects();
+        clip.PlaySound("noise.wav");
+
         //Main text in UI
         ui.mainTextPlace.setText("You have a vision of a shadowy figure rising" +
                 "\nfrom a crypt." +
@@ -3545,6 +3616,9 @@ public class Story {
     }
 
     public void villageStoreTake3() {
+
+        clip = new SoundEffects();
+        clip.PlaySound("noise.wav");
 
         //Main text in UI
         ui.mainTextPlace.setText("You scream in pain wishing it would stop." +
@@ -3612,7 +3686,6 @@ public class Story {
         game.position3 = "";
 
     }
-
 
 
     // Story 12 CITY-------------------------------------------------------------
@@ -3753,7 +3826,7 @@ public class Story {
 
         // Re-assigning player health
         player.playerHealth = player.playerHealth - 1;
-        if(player.playerHealth <= 0){
+        if (player.playerHealth <= 0) {
             // Buttons
             ui.choice1.setText(">");
             ui.choice2.setText("-");
@@ -3827,7 +3900,7 @@ public class Story {
     }
 
 
-    public void innerCitySpecial(){
+    public void innerCitySpecial() {
 
         //Main text in UI
         ui.mainTextPlace.setText("The sky growls and lights up." +
@@ -3846,7 +3919,7 @@ public class Story {
         game.position3 = "";
     }
 
-    public void innerCitySpecial2(){
+    public void innerCitySpecial2() {
 
         //Main text in UI
         ui.mainTextPlace.setText("You catch your sword and slam it into the ground." +
@@ -3870,7 +3943,7 @@ public class Story {
     // Special attack Random decider
     public void innerCitySpecialAttackResult() {
 
-        if(player.specialAttack == 0){
+        if (player.specialAttack == 0) {
 
 
             //Main text in UI
@@ -3885,8 +3958,7 @@ public class Story {
             game.position1 = "innerCitySavedWoman";
             game.position2 = "";
             game.position3 = "";
-        }
-        else if(player.specialAttack == 1){
+        } else if (player.specialAttack == 1) {
 
             //Main text in UI
             ui.mainTextPlace.setText("You have been obliterated.");
@@ -3900,8 +3972,7 @@ public class Story {
             game.position1 = "loseBattle";
             game.position2 = "";
             game.position3 = "";
-        }
-        else{
+        } else {
             //Main text in UI
             ui.mainTextPlace.setText("The enemy has been obliterated.");
 
@@ -3963,7 +4034,6 @@ public class Story {
         //Main text in UI
         ui.mainTextPlace.setText("You parry the incoming attack and strike" +
                 "\nthe enemy down with ease.");
-
 
 
         // Buttons
@@ -4076,7 +4146,7 @@ public class Story {
 
     }
 
-    public void innerCityHordeSpecial(){
+    public void innerCityHordeSpecial() {
 
         //Main text in UI
         ui.mainTextPlace.setText("The sky growls and lights up." +
@@ -4090,12 +4160,12 @@ public class Story {
         ui.choice3.setText("-");
 
         // button assign
-        game.position1 = "innerCitySpecial2";
+        game.position1 = "innerCityHordeSpecial2";
         game.position2 = "";
         game.position3 = "";
     }
 
-    public void innerCityHordeSpecial2(){
+    public void innerCityHordeSpecial2() {
 
         //Main text in UI
         ui.mainTextPlace.setText("You catch your sword and slam it into the ground." +
@@ -4119,23 +4189,8 @@ public class Story {
     // Special attack Random decider (Guaranteed to be successful this instance)
     public void innerCityHordeSpecialResult() {
 
-        if(player.specialAttack == 0){
+        if(player.specialAttack == 0) {
 
-
-            //Main text in UI
-            ui.mainTextPlace.setText("The enemy has been obliterated.");
-
-            // Buttons
-            ui.choice1.setText("Continue");
-            ui.choice2.setText("-");
-            ui.choice3.setText("-");
-
-            // button assign
-            game.position1 = "innerCityHordeDefeat";
-            game.position2 = "";
-            game.position3 = "";
-        }
-        else if(player.specialAttack == 1){
 
             //Main text in UI
             ui.mainTextPlace.setText("You have been obliterated.");
@@ -4149,8 +4204,7 @@ public class Story {
             game.position1 = "loseBattle";
             game.position2 = "";
             game.position3 = "";
-        }
-        else{
+        } else {
             //Main text in UI
             ui.mainTextPlace.setText("The enemy has been obliterated.");
 
@@ -4221,6 +4275,7 @@ public class Story {
         game.position2 = "innerCityAlleyRight";
         game.position3 = "";
     }
+
     public void innerCityAlleyLeft() {
 
         //Main text in UI
@@ -4233,7 +4288,7 @@ public class Story {
                 "\n\nYou receive potion x2!");
 
         //Re-assigning player health after damage
-        player.playerHealth = player.playerHealth -1;
+        player.playerHealth = player.playerHealth - 1;
         //Re-assigning health in the UI
         ui.hpLabelNum.setText(Integer.toString(player.getPlayerHealth()));
 
@@ -4253,6 +4308,7 @@ public class Story {
         game.position2 = "";
         game.position3 = "";
     }
+
     public void innerCityAlleyRight() {
 
         //Main text in UI
@@ -4360,7 +4416,7 @@ public class Story {
         }
     }
 
-    public void undeadAttack(){
+    public void undeadAttack() {
 
         // Assigning enemy attack value and re-assigning player health
         enemy.enemyAttack = enemy.rand.nextInt(enemy.attackValues.length);
@@ -4376,7 +4432,7 @@ public class Story {
         ui.hpLabelNum.setText(Integer.toString(player.getPlayerHealth()));
 
         // statements to catch player death
-        if(player.getPlayerHealth() > 0){
+        if (player.getPlayerHealth() > 0) {
             // Buttons
             ui.choice1.setText("Attack");
             ui.choice2.setText("Potion");
@@ -4386,8 +4442,7 @@ public class Story {
             game.position1 = "attackUndead";
             game.position2 = "usePotionUndead";
             game.position3 = "useSpecialUndead";
-        }
-        else{
+        } else {
             // Setting health to 0 to stop displaying negative numbers
             ui.hpLabelNum.setText(Integer.toString(0));
             // Buttons
@@ -4403,7 +4458,7 @@ public class Story {
 
     }
 
-    public void winUndeadBattle(){
+    public void winUndeadBattle() {
 
         //Main text in UI
         ui.mainTextPlace.setText("You have slain the " + enemy.getType() +
@@ -4430,7 +4485,7 @@ public class Story {
         game.position3 = "";
     }
 
-    public void usePotionUndead(){
+    public void usePotionUndead() {
 
         if (player.potionCapacity > 0) {
             //Re-assigning player health
@@ -4458,7 +4513,7 @@ public class Story {
         game.position3 = "useSpecialUndead";
     }
 
-    public void useSpecialUndead(){
+    public void useSpecialUndead() {
 
         //Main text in UI
         ui.mainTextPlace.setText("The sky growls and lights up." +
@@ -4477,7 +4532,7 @@ public class Story {
         game.position3 = "";
     }
 
-    public void useSpecialUndead2(){
+    public void useSpecialUndead2() {
 
         //Main text in UI
         ui.mainTextPlace.setText("You catch your sword and slam it into the ground." +
@@ -4501,7 +4556,7 @@ public class Story {
     // Special attack Random decider (Guaranteed to be successful this instance)
     public void specialUndeadResult() {
 
-        if(player.specialAttack == 0){
+        if (player.specialAttack == 0) {
 
 
             //Main text in UI
@@ -4516,8 +4571,7 @@ public class Story {
             game.position1 = "winUndeadBattle";
             game.position2 = "";
             game.position3 = "";
-        }
-        else if(player.specialAttack == 1){
+        } else if (player.specialAttack == 1) {
 
             //Main text in UI
             ui.mainTextPlace.setText("The enemy has been obliterated.");
@@ -4531,8 +4585,7 @@ public class Story {
             game.position1 = "loseBattle";
             game.position2 = "";
             game.position3 = "";
-        }
-        else{
+        } else {
             //Main text in UI
             ui.mainTextPlace.setText("The enemy has been obliterated.");
 
@@ -4575,8 +4628,7 @@ public class Story {
     public void cityTrollBattle() {
 
 // Sound effect
-        clip = new SoundEffects();
-        clip.PlaySound("");
+
 
         enemy = new Enemy("Troll", 15);
 
@@ -4633,7 +4685,10 @@ public class Story {
         }
     }
 
-    public void trollAttack(){
+    public void trollAttack() {
+
+        clip = new SoundEffects();
+        clip.PlaySound("trollAttack.wav");
 
         // Assigning enemy attack value and re-assigning player health
         enemy.enemyAttack = enemy.rand.nextInt(enemy.attackValues.length) + 1;
@@ -4649,7 +4704,7 @@ public class Story {
         ui.hpLabelNum.setText(Integer.toString(player.getPlayerHealth()));
 
         // statements to catch player death
-        if(player.getPlayerHealth() > 0){
+        if (player.getPlayerHealth() > 0) {
             // Buttons
             ui.choice1.setText("Attack");
             ui.choice2.setText("Potion");
@@ -4659,8 +4714,7 @@ public class Story {
             game.position1 = "attackTroll";
             game.position2 = "usePotionTroll";
             game.position3 = "useSpecialTroll";
-        }
-        else{
+        } else {
             // Setting health to 0 to stop displaying negative numbers
             ui.hpLabelNum.setText(Integer.toString(0));
             // Buttons
@@ -4676,11 +4730,11 @@ public class Story {
 
     }
 
-    public void winTrollBattle(){
+    public void winTrollBattle() {
 
         //Main text in UI
         ui.mainTextPlace.setText("You have slain the " + enemy.getType() + "."
-        + "\n\nYou have found leather armour. You now take" +
+                + "\n\nYou have found leather armour. You now take" +
                 "\n\nless damage from enemies.");
 
 
@@ -4699,7 +4753,7 @@ public class Story {
         game.position3 = "";
     }
 
-    public void trollLoot(){
+    public void trollLoot() {
 
         clip = new SoundEffects();
         clip.PlaySound("");
@@ -4736,7 +4790,7 @@ public class Story {
         game.position3 = "";
     }
 
-    public void usePotionTroll(){
+    public void usePotionTroll() {
 
         if (player.potionCapacity > 0) {
             //Re-assigning player health
@@ -4764,7 +4818,7 @@ public class Story {
         game.position3 = "useSpecialTroll";
     }
 
-    public void useSpecialTroll(){
+    public void useSpecialTroll() {
 
         //Main text in UI
         ui.mainTextPlace.setText("The sky growls and lights up." +
@@ -4783,7 +4837,7 @@ public class Story {
         game.position3 = "";
     }
 
-    public void useSpecialTroll2(){
+    public void useSpecialTroll2() {
 
         //Main text in UI
         ui.mainTextPlace.setText("You catch your sword and slam it into the ground." +
@@ -4807,7 +4861,7 @@ public class Story {
     // Special attack Random decider (Guaranteed to be successful this instance)
     public void specialTrollResult() {
 
-        if(player.specialAttack == 0){
+        if (player.specialAttack == 0) {
 
 
             //Main text in UI
@@ -4822,11 +4876,10 @@ public class Story {
             game.position1 = "winTrollBattle";
             game.position2 = "";
             game.position3 = "";
-        }
-        else if(player.specialAttack == 1){
+        } else if (player.specialAttack == 1) {
 
             //Main text in UI
-            ui.mainTextPlace.setText("The enemy has been obliterated.");
+            ui.mainTextPlace.setText("You have been obliterated.");
 
             // Buttons
             ui.choice1.setText("Continue");
@@ -4837,8 +4890,7 @@ public class Story {
             game.position1 = "loseBattle";
             game.position2 = "";
             game.position3 = "";
-        }
-        else{
+        } else {
             //Main text in UI
             ui.mainTextPlace.setText("The enemy has been obliterated.");
 
@@ -5127,7 +5179,7 @@ public class Story {
         ui.choice3.setText("-");
 
         // button assign
-        game.position1 = "mainStory13Road";
+        game.position1 = "continueToMainStory13";
         game.position2 = "";
         game.position3 = "";
 
@@ -5230,10 +5282,11 @@ public class Story {
 
         //Main text in UI
         ui.mainTextPlace.setText("You head right." +
-                "\n\nThe path veers off and bends around a lake" +
-                "\nand into the forest." +
+                "\n\nThe path veers off and bends around a lake and" +
+                "\ninto the forest." +
                 "\n\nYou come to the edge of the forest." +
-                "\n\nThe trees tower over you making the whole forest dark." +
+                "\n\nThe trees tower over you making the whole" +
+                "\nforest dark." +
                 "\n\nAn strange moan travels along the wind.");
 
         // Buttons
@@ -5257,7 +5310,8 @@ public class Story {
                 "\n\nTrying to stay on the faded path, you come" +
                 "\nacross an old sign." +
                 "\n\nIt reads:" +
-                "\n\nThe Witch, The Witch & The Witch.");
+                "\n\nThe Witch, The Witch & The Witch." +
+                "\nKnock these times for us to see.");
 
         // Buttons
         ui.choice1.setText("Continue");
@@ -5275,8 +5329,8 @@ public class Story {
 
         //Main text in UI
         ui.mainTextPlace.setText("'A witch?!' you say to yourself." +
-                "\n'My past experiences with witches have" +
-                "\nnever ended pleasantly.'");
+                "\n\n'My past experiences with witches have never" +
+                "\nended pleasantly.'");
 
         // Buttons
         ui.choice1.setText("Continue");
@@ -5292,30 +5346,51 @@ public class Story {
 
     public void forestWitchProtector() {
 
-        //Main text in UI
-        ui.mainTextPlace.setText("what little path there was disappears and" +
-                "\nis not just forest floor." +
-                "\n\nYou see a small hut, hidden between the trees." +
-                "\n\nBefore you can take another step one of the trees" +
-                "\ncomes to life and blocks your path!");
+        if(player.getDefeatGuardian() == 0) {
+            //Main text in UI
+            ui.mainTextPlace.setText("What little path there was disappears and" +
+                    "\nthere is only forest floor." +
+                    "\n\nYou see a small hut, hidden between the trees." +
+                    "\n\nBefore you can take another step one of the trees" +
+                    "\ncomes to life and blocks your path!");
 
-        // Buttons
-        ui.choice1.setText("Continue");
-        ui.choice2.setText("-");
-        ui.choice3.setText("-");
+            // Buttons
+            ui.choice1.setText("Continue");
+            ui.choice2.setText("-");
+            ui.choice3.setText("-");
 
-        // button assign
-        game.position1 = "forestProtectorSpeak";
-        game.position2 = "";
-        game.position3 = "";
+            // button assign
+            game.position1 = "forestProtectorSpeak";
+            game.position2 = "";
+            game.position3 = "";
 
+        }
+        else{
+
+            //Main text in UI
+            ui.mainTextPlace.setText("what little path there was disappears and." +
+                    "\nthere is only forest floor." +
+                    "\n\nYou see a small hut, hidden between the trees." +
+                    "\n\nYou cautiously take a step closer but this time" +
+                    "\nthere is no Guardian...");
+
+            // Buttons
+            ui.choice1.setText("Continue");
+            ui.choice2.setText("-");
+            ui.choice3.setText("-");
+
+            // button assign
+            game.position1 = "witchesHut";
+            game.position2 = "";
+            game.position3 = "";
+        }
     }
 
     public void forestProtectorSpeak() {
 
         //Main text in UI
         ui.mainTextPlace.setText("'Leaf this place intruder!'" +
-                "'To see the witches three you have to get through me.'");
+                "\n\n'To see the witches three you have to get through me.'");
 
         // Buttons
         ui.choice1.setText("Continue");
@@ -5332,6 +5407,9 @@ public class Story {
     public void forestProtectorFight() {
 
         enemy = new Enemy("Ent", 20);
+
+        clip = new SoundEffects();
+        clip.PlaySound(".wav");
 
         //Main text in UI
         ui.mainTextPlace.setText("You run into a " + enemy.getType() + "!\n" + enemy.getType() + " HP: " + enemy.getEnemyHealth());
@@ -5350,24 +5428,61 @@ public class Story {
 
     public void entRun() {
 
-        enemy = new Enemy("Ent", 20);
 
         //Main text in UI
-        ui.mainTextPlace.setText("You run into a " + enemy.getType() + "!\n" + enemy.getType() + " HP: " + enemy.getEnemyHealth());
+        ui.mainTextPlace.setText("It seems too strong. You decide not to engage" +
+                "\nAnd leave the forest.");
 
         // Buttons
-        ui.choice1.setText("Fight");
+        ui.choice1.setText("Run");
         ui.choice2.setText("-");
-        ui.choice3.setText("Run");
+        ui.choice3.setText("-");
 
         // button assign
-        game.position1 = "entBattle";
+        game.position1 = "entRunCrossRoad";
         game.position2 = "";
-        game.position3 = "entRun";
+        game.position3 = "";
+
+    }
+
+    public void entRunCrossRoad() {
+
+
+        //Main text in UI
+        ui.mainTextPlace.setText("You are back at the crossroad." +
+                "\n\nWhich way will you go?");
+
+        // Buttons
+        ui.choice1.setText("Forward");
+        ui.choice2.setText("Left");
+        ui.choice3.setText("Right");
+
+        // button assign
+        game.position1 = "crossRoadForward";
+        game.position2 = "crossRoadLeft";
+        game.position3 = "crossRoadRight";
 
     }
 
     public void entBattle() {
+
+
+        // Buttons
+        ui.choice1.setText("Attack");
+        ui.choice2.setText("Potion");
+        ui.choice3.setText("Special");
+
+        // button assign
+        game.position1 = "attackEnt";
+        game.position2 = "usePotionEnt";
+        game.position3 = "useSpecialEnt";
+
+    }
+
+    public void attackEnt() {
+
+        clip = new SoundEffects();
+        clip.PlaySound("");
 
         // Assigning player attack value and re-assigning enemy health
         player.playerAttack = player.rand.nextInt(player.attackValues.length) + 1;
@@ -5387,7 +5502,7 @@ public class Story {
             ui.choice3.setText("-");
 
             // button assign
-            game.position1 = "trollAttack";
+            game.position1 = "entAttack";
             game.position2 = "";
             game.position3 = "";
         } else {
@@ -5399,13 +5514,13 @@ public class Story {
             ui.choice3.setText("-");
 
             // button assign
-            game.position1 = "winTrollBattle";
+            game.position1 = "winEntBattle";
             game.position2 = "";
             game.position3 = "";
         }
     }
 
-    public void trollAttack(){
+    public void entAttack() {
 
         // Assigning enemy attack value and re-assigning player health
         enemy.enemyAttack = enemy.rand.nextInt(enemy.attackValues.length) + 1;
@@ -5421,18 +5536,17 @@ public class Story {
         ui.hpLabelNum.setText(Integer.toString(player.getPlayerHealth()));
 
         // statements to catch player death
-        if(player.getPlayerHealth() > 0){
+        if (player.getPlayerHealth() > 0) {
             // Buttons
             ui.choice1.setText("Attack");
             ui.choice2.setText("Potion");
             ui.choice3.setText("Special");
 
             // button assign
-            game.position1 = "attackTroll";
-            game.position2 = "usePotionTroll";
-            game.position3 = "useSpecialTroll";
-        }
-        else{
+            game.position1 = "attackEnt";
+            game.position2 = "usePotionEnt";
+            game.position3 = "useSpecialEnt";
+        } else {
             // Setting health to 0 to stop displaying negative numbers
             ui.hpLabelNum.setText(Integer.toString(0));
             // Buttons
@@ -5448,12 +5562,14 @@ public class Story {
 
     }
 
-    public void winTrollBattle(){
+    public void winEntBattle() {
+
+        player.setDefeatGuardian(1);
 
         //Main text in UI
-        ui.mainTextPlace.setText("You have slain the " + enemy.getType() + "."
-                + "\n\nYou have found leather armour. You now take" +
-                "\n\nless damage from enemies.");
+        ui.mainTextPlace.setText("You have slain the " + enemy.getType() + "" +
+                "\n\nRoots starts to engulf the ent as it disappears" +
+                "\ninto the ground.");
 
 
         // Sound effect
@@ -5461,54 +5577,18 @@ public class Story {
         clip.PlaySound("winFight.wav");
 
         // Buttons
-        ui.choice1.setText("Loot");
+        ui.choice1.setText(">");
         ui.choice2.setText("-");
         ui.choice3.setText("-");
 
         // button assign
-        game.position1 = "trollLoot";
+        game.position1 = "witchesHut";
         game.position2 = "";
         game.position3 = "";
     }
 
-    public void trollLoot(){
 
-        clip = new SoundEffects();
-        clip.PlaySound("");
-
-        player.potionCapacity += 1;
-        ui.potionCapNum.setText(Integer.toString(player.potionCapacity));
-
-        clip = new SoundEffects();
-        clip.PlaySound("potionCollect.wav");
-
-        //Main text in UI
-        ui.mainTextPlace.setText("        *******************" +
-                "\n        *                                *" +
-                "\n        *   You receive loot:    *" +
-                "\n        *                                *" +
-                "\n        *   Leather Arm x1       *" +
-                "\n        *   (Max HP + 2)   *" +
-                "\n        *                                *" +
-                "\n        *   Potion x1               *" +
-                "\n        *                                *" +
-                "\n        *******************");
-
-        player.playerHealth = player.playerHealth + 2;
-        player.playerMaxHealth += 2;
-
-        // Buttons
-        ui.choice1.setText("Continue");
-        ui.choice2.setText("-");
-        ui.choice3.setText("-");
-
-        // button assign
-        game.position1 = "leaveCity";
-        game.position2 = "";
-        game.position3 = "";
-    }
-
-    public void usePotionTroll(){
+    public void usePotionEnt() {
 
         if (player.potionCapacity > 0) {
             //Re-assigning player health
@@ -5531,12 +5611,12 @@ public class Story {
         ui.choice3.setText("Special");
 
         // Button assign
-        game.position1 = "attackTroll";
-        game.position2 = "usePotionTroll";
-        game.position3 = "useSpecialTroll";
+        game.position1 = "attackEnt";
+        game.position2 = "usePotionEnt";
+        game.position3 = "useSpecialEnt";
     }
 
-    public void useSpecialTroll(){
+    public void useSpecialEnt() {
 
         //Main text in UI
         ui.mainTextPlace.setText("The sky growls and lights up." +
@@ -5550,12 +5630,12 @@ public class Story {
         ui.choice3.setText("-");
 
         // button assign
-        game.position1 = "useSpecialUndead2";
+        game.position1 = "useSpecialEnt2";
         game.position2 = "";
         game.position3 = "";
     }
 
-    public void useSpecialTroll2(){
+    public void useSpecialEnt2() {
 
         //Main text in UI
         ui.mainTextPlace.setText("You catch your sword and slam it into the ground." +
@@ -5571,15 +5651,15 @@ public class Story {
         ui.choice3.setText("-");
 
         // button assign
-        game.position1 = "specialTrollResult";
+        game.position1 = "specialEntResult";
         game.position2 = "";
         game.position3 = "";
     }
 
     // Special attack Random decider (Guaranteed to be successful this instance)
-    public void specialTrollResult() {
+    public void specialEntResult() {
 
-        if(player.specialAttack == 0){
+        if (player.specialAttack == 0) {
 
 
             //Main text in UI
@@ -5591,11 +5671,10 @@ public class Story {
             ui.choice3.setText("-");
 
             // button assign
-            game.position1 = "winTrollBattle";
+            game.position1 = "winEntBattle";
             game.position2 = "";
             game.position3 = "";
-        }
-        else if(player.specialAttack == 1){
+        } else if (player.specialAttack == 1) {
 
             //Main text in UI
             ui.mainTextPlace.setText("The enemy has been obliterated.");
@@ -5609,8 +5688,7 @@ public class Story {
             game.position1 = "loseBattle";
             game.position2 = "";
             game.position3 = "";
-        }
-        else{
+        } else {
             //Main text in UI
             ui.mainTextPlace.setText("The enemy has been obliterated.");
 
@@ -5620,7 +5698,7 @@ public class Story {
             ui.choice3.setText("-");
 
             // button assign
-            game.position1 = "winTrollBattle";
+            game.position1 = "winEntBattle";
             game.position2 = "";
             game.position3 = "";
         }
@@ -5628,7 +5706,230 @@ public class Story {
 
     }
 
+    public void witchesHut() {
+
+        player.witchCounter = player.witchCounter += 1;
+
+
+            //Main text in UI
+            ui.mainTextPlace.setText("You approach the hut." +
+                    "\n\nIt seems to have merged with the forest." +
+                    "\n\nWhat will you do?");
+
+            // Buttons
+            ui.choice1.setText("Knock");
+            ui.choice2.setText("-");
+            ui.choice3.setText("Leave");
+
+            // button assign
+            game.position1 = "hutKnock1";
+            game.position2 = "";
+            game.position3 = "entRunCrossRoad";
+        }
+
+    public void hutKnock1() {
+
+        //Main text in UI
+        ui.mainTextPlace.setText("There is no answer.");
+
+        // Buttons
+        ui.choice1.setText("Knock");
+        ui.choice2.setText("-");
+        ui.choice3.setText("Leave");
+
+        // button assign
+        game.position1 = "hutKnock2";
+        game.position2 = "";
+        game.position3 = "entRunCrossRoad";
+    }
+
+    public void hutKnock2() {
+
+
+        //Main text in UI
+        ui.mainTextPlace.setText("You knock again but there is still no answer." +
+                "\nIt doesn't seem like anybody is home.");
+
+        // Buttons
+        ui.choice1.setText("Knock");
+        ui.choice2.setText("-");
+        ui.choice3.setText("Leave");
+
+        // button assign
+        game.position1 = "hutKnock3";
+        game.position2 = "";
+        game.position3 = "entRunCrossRoad";
+    }
+
+    public void hutKnock3() {
+
+        if (player.getWitchCounter() > 3) {
+
+            //Main text in UI
+            ui.mainTextPlace.setText("You knock again but there is no answer.");
+
+            // Buttons
+            ui.choice1.setText("Leave");
+            ui.choice2.setText("-");
+            ui.choice3.setText("-");
+
+            // button assign
+            game.position1 = "entRunCrossRoad";
+            game.position2 = "";
+            game.position3 = "";
+
+
+        }
+        else{
+
+            clip = new SoundEffects();
+            clip.PlaySound("doorCreek.wav");
+
+            //Main text in UI
+            ui.mainTextPlace.setText("You knock again." +
+                    "\n\nThe door immediately opens." +
+                    "\n\n'Hello, Hello, Hello.'" +
+                    "\n\n'Come in, come in, come in.'" +
+                    "\n\nIn front of you are 3 small old women." +
+                    "\n\nAll wearing cloaks, one brown, one green and one black.");
+
+            // Buttons
+            ui.choice1.setText("Enter");
+            ui.choice2.setText("-");
+            ui.choice3.setText("-");
+
+            // button assign
+            game.position1 = "witchesHutAnswer";
+            game.position2 = "";
+            game.position3 = "";
+
+        }
+    }
+
+    public void witchesHutAnswer() {
+
+        if(player.getWitchCounter() == 2) {
+            //Main text in UI
+            ui.mainTextPlace.setText("'We have been expecting you.' they all say." +
+                    "\n\n'Yes, yes, yes." +
+                    "\n\nYou are having the strangest feeling of" +
+                    "\nof deva vu.");
+
+        }
+        else{
+            //Main text in UI
+            ui.mainTextPlace.setText("'We have been expecting you.' they all say." +
+                    "\n\n'Yes, yes, yes");
+        }
+        // Buttons
+        ui.choice1.setText("Speak");
+        ui.choice2.setText("-");
+        ui.choice3.setText("-");
+
+        // button assign
+        game.position1 = "witchesConvo";
+        game.position2 = "";
+        game.position3 = "";
+    }
+
+    public void witchesConvo() {
+
+        if (player.getWitchCounter() < 3) {
+            //Main text in UI
+            ui.mainTextPlace.setText("The witches butt in'." +
+                    "\n\n'We are the witch' they say." +
+                    "\n\n'This land has become cursed'." +
+                    "\n\n'Our forest is dying!'");
+
+            // Buttons
+            ui.choice1.setText("Speak");
+            ui.choice2.setText("-");
+            ui.choice3.setText("-");
+
+            // button assign
+            game.position1 = "witchesConvo2";
+            game.position2 = "";
+            game.position3 = "";
+        }
+        else{
+
+            //Main text in UI
+            ui.mainTextPlace.setText("Before you can say anything the witches" +
+                    "\nhold out their hands and present to you a" +
+                    "\npurple skull necklace." +
+                    "\n\n'This land is plagued by death and decay," +
+                    "\n\nPrevent it one time and one time only, okay?.'");
+
+            // Buttons
+            ui.choice1.setText("Take");
+            ui.choice2.setText("-");
+            ui.choice3.setText("-");
+
+            // button assign
+            game.position1 = "witchesNecklace";
+            game.position2 = "";
+            game.position3 = "";
+        }
+    }
+
+    public void witchesConvo2() {
+
+        //Main text in UI
+        ui.mainTextPlace.setText("Before you can speak one of the witches" +
+                "\nplucks at your hair and another cuts your arm." +
+                "\n\nThe witches chant:" +
+                "\n\n'Visit the witch," +
+                "\nthe witch of 3'." +
+                "\nAnd come to claim," +
+                "\na reward for thee." +
+                "\n\nYou black out...");
+
+        // Buttons
+        ui.choice1.setText("Wake");
+        ui.choice2.setText("-");
+        ui.choice3.setText("-");
+
+        // button assign
+        game.position1 = "entRunCrossRoad";
+        game.position2 = "";
+        game.position3 = "";
+    }
+
+    public void witchesNecklace() {
+
+        //Main text in UI
+        ui.mainTextPlace.setText("You take the necklace and put it around" +
+                "\nyour neck." +
+                "\n\nYou become");
+        // Buttons
+        ui.choice1.setText("Wake");
+        ui.choice2.setText("-");
+        ui.choice3.setText("-");
+
+        // button assign
+        game.position1 = "entRunCrossRoad";
+        game.position2 = "";
+        game.position3 = "";
+    }
+
+    public void necklaceCrossRoad() {
+
+        //Main text in UI
+        ui.mainTextPlace.setText("You take the necklace and put it around" +
+                "\nyour neck." +
+                "\n\nYou become");
+        // Buttons
+        ui.choice1.setText("Wake");
+        ui.choice2.setText("-");
+        ui.choice3.setText("-");
+
+        // button assign
+        game.position1 = "entRunCrossRoad";
+        game.position2 = "";
+        game.position3 = "";
+    }
 
 
 
 }
+
