@@ -806,6 +806,16 @@ public class Story {
             case "necklaceOfLifeUse":
                 necklaceOfLifeUse();
                 break;
+            case "endGame":
+                endGame();
+                break;
+            case "endGame2":
+                endGame2();
+                break;
+            case "endScreen":
+                endScreen();
+                break;
+
 
 
         }
@@ -6849,10 +6859,6 @@ public class Story {
     public void necklaceOfLifeUse() {
 
 
-
-
-
-
         //Main text in UI
         ui.mainTextPlace.setText("Before you can die, the necklace you got from the witches erupts and emits a purple light. " +
                 "It surrounds you and you feel rejuvenated." +
@@ -6878,17 +6884,82 @@ public class Story {
     public void monasteryAfterBattle() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("The evil that one spread the land is now gone along with Calyx.");
+        ui.mainTextPlace.setText("The evil that one spread the land is now gone along with Calyx." +
+                "\n\nYou feel sense of peace overcome you." +
+                "\n\nYou collapse from exhaustion." +
+                "\n\nYou start to become unconscious from exhaustion and pass out.");
 
 
 
         // Buttons
-        ui.choice1.setText("End");
+        ui.choice1.setText(">");
         ui.choice2.setText("-");
         ui.choice3.setText("-");
 
         // button assign
-        game.position1 = "";
+        game.position1 = "endGame";
+        game.position2 = "";
+        game.position3 = "";
+    }
+
+    public void endGame() {
+
+        //Main text in UI
+        ui.mainTextPlace.setText("You seem to be conscious still..." +
+                "\n\nBut you cant move or see. Everything is dark. " +
+                "\n\nA whisper from behind");
+
+
+
+        // Buttons
+        ui.choice1.setText(">");
+        ui.choice2.setText("-");
+        ui.choice3.setText("-");
+
+        // button assign
+        game.position1 = "endGame2";
+        game.position2 = "";
+        game.position3 = "";
+    }
+
+    public void endGame2() {
+
+        //Main text in UI
+        ui.mainTextPlace.setText("'You thought that it was over?!'");
+
+        clip = new SoundEffects();
+        clip.PlaySound("noise.wav");
+
+
+        // Buttons
+        ui.choice1.setText(">");
+        ui.choice2.setText("-");
+        ui.choice3.setText("-");
+
+        // button assign
+        game.position1 = "endScreen";
+        game.position2 = "";
+        game.position3 = "";
+    }
+
+    public void endScreen() {
+
+        //Main text in UI
+        ui.mainTextPlace.setText("You have made it to the end!" +
+                "\n\n CONGRATULATIONS!" +
+                "\n\nThis game was made by:  Lee Maunder" +
+                "\n\nUntil next time!");
+
+
+
+
+        // Buttons
+        ui.choice1.setText("Title");
+        ui.choice2.setText("-");
+        ui.choice3.setText("-");
+
+        // button assign
+        game.position1 = "toTitleScreen";
         game.position2 = "";
         game.position3 = "";
     }
