@@ -11,6 +11,8 @@ public class Story {
     Player player = new Player();
     Enemy enemy;
     SoundEffects clip, clip1;
+
+    //Variables
     int enemyRemaining = 23;
 
 
@@ -41,6 +43,8 @@ public class Story {
         player.setNecklaceOfLife(0);
         player.setPlayerSoul(0);
         player.setShadowyFigure(0);
+        player.setFishItem(0);
+        player.setMerchantItem(0);
 
 
     }
@@ -682,11 +686,125 @@ public class Story {
             case "witchesNecklace":
                 witchesNecklace();
                 break;
-            case "necklaceCrossRoad":
-                necklaceCrossRoad();
-                break;
             case "crossRoadLeft":
                 crossRoadLeft();
+                break;
+            case "leftInvestigate":
+                leftInvestigate();
+                break;
+            case "cartApologise":
+                cartApologise();
+                break;
+            case "cartAnswerYes":
+                cartAnswerYes();
+                break;
+            case "cartAnswerNo":
+                cartAnswerNo();
+                break;
+            case "cartManSpeak":
+                cartManSpeak();
+                break;
+            case "cartTakePotion":
+                cartTakePotion();
+                break;
+            case "cartTakeFish":
+                cartTakeFish();
+                break;
+            case "cartTakeShield":
+                cartTakeShield();
+                break;
+            case "cartFarewell":
+                cartFarewell();
+                break;
+            case "cartLeave":
+                cartLeave();
+                break;
+            case "cartManTruth":
+                cartManTruth();
+                break;
+            case "cartManLie":
+                cartManLie();
+                break;
+            case "cartManLie2":
+                cartManLie2();
+                break;
+            case "cartManLieLeave":
+                cartManLieLeave();
+                break;
+            case "cartManLieSpeak":
+                cartManLieSpeak();
+                break;
+            case "cartManLieContinue":
+                cartManLieContinue();
+                break;
+            case "cartManLieSpeak2":
+                cartManLieSpeak2();
+                break;
+            case "travelLeon":
+                travelLeon();
+                break;
+            case "monasteryIgnore":
+                monasteryIgnore();
+                break;
+            case "monasteryWhisper":
+                monasteryWhisper();
+                break;
+            case "monastery":
+                monastery();
+                break;
+            case "insideMonastery":
+                insideMonastery();
+                break;
+            case "monasteryGates":
+                monasteryGates();
+                break;
+            case "insideMonasterySpeak":
+                insideMonasterySpeak();
+                break;
+            case "monasterySavedElla":
+                monasterySavedElla();
+                break;
+            case "monasteryShadowFigure":
+                monasteryShadowFigure();
+                break;
+            case "monasteryShadowFigureFight":
+                monasteryShadowFigureFight();
+                break;
+            case "monasteryShadowFigureTell":
+                monasteryShadowFigureTell();
+                break;
+            case "monasteryCalyx":
+                monasteryCalyx();
+                break;
+            case "calyxBattle":
+                calyxBattle();
+                break;
+            case "attackCalyx":
+                attackCalyx();
+                break;
+            case "calyxAttack":
+                calyxAttack();
+                break;
+            case "winCalyxBattle":
+                winCalyxBattle();
+                break;
+            case "usePotionCalyx":
+                usePotionCalyx();
+                break;
+            case "useSpecialCalyx":
+                useSpecialCalyx();
+                break;
+            case "useSpecialCalyx2":
+                useSpecialCalyx2();
+                break;
+            case "specialCalyxResult":
+                specialCalyxResult();
+                break;
+            case "monasteryAfterBattle":
+                monasteryAfterBattle();
+                break;
+            case "necklaceOfLifeUse":
+                necklaceOfLifeUse();
                 break;
 
 
@@ -777,13 +895,10 @@ public class Story {
         clip.PlaySound("");
 
         //Main text in UI
-        ui.mainTextPlace.setText("This tale begins in the region of Zanarkand, in\nyour home village, Hill Tale." +
-                "\n\nThe world around you is slowly decaying, friends become ill, vegetation dying and food rotting but" +
-                "\nnobody seems to know why." +
-                "\n\nOne night while asleep you are awoken by the" +
-                "\nscreams of the villagers." +
-                "\n\nYou quickly get dressed, grab your sword and" +
-                "\nrush out the door to see what's going on.");
+        ui.mainTextPlace.setText("This tale begins in the region of Zanarkand, in your home village, Hill Tale." +
+                "\n\nThe world around you is slowly decaying, friends become ill, vegetation dying and food rotting but nobody seems to know why." +
+                "\n\nOne night while asleep you are awoken by the screams of the villagers." +
+                "\n\nYou quickly get dressed, grab your sword and rush out the door to see what's going on.");
 
         // Buttons
         ui.choice1.setText("Continue");
@@ -804,8 +919,7 @@ public class Story {
         ui.mainTextPlace.setText("Outside is chaos." +
                 "\n\nPeople are running and screaming and houses are ablaze." +
                 "\n\nThe metallic smell of blood engulfs the air." +
-                "\n\nBefore you can figure out what is happening you" +
-                "\nfeel a heavy thud to your head." +
+                "\n\nBefore you can figure out what is happening you feel a heavy thud to your head." +
                 "\n\n You are unconscious.");
 
         // Buttons
@@ -842,7 +956,7 @@ public class Story {
         //Main text in UI
         ui.mainTextPlace.setText("You slowly awaken..." +
                 "\n\nYour sword still clutched in your hand." +
-                "\nA surge of pain rushes to the back of your head" +
+                "\n\nA surge of pain rushes to the back of your head" +
                 "\n\n'Uhhhh my head'" +
                 "\n\nSilence falls upon the village..." +
                 "\n\nThe once piercing screams have gone." +
@@ -882,10 +996,8 @@ public class Story {
     public void story5Continue() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("You continue on for some time until the path" +
-                "\n narrows." +
-                "\n\nThe trees and shrubs have overgrown making it" +
-                "\n awkward to get through.");
+        ui.mainTextPlace.setText("You continue on for some time until the path narrows." +
+                "\n\nThe trees and shrubs have overgrown making it awkward to get through.");
 
         // Buttons
         ui.choice1.setText("Push through");
@@ -901,10 +1013,8 @@ public class Story {
     public void story5Push() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("You force your way through the overgrown" +
-                "\nshrubs..." +
-                "\n\nYou get a few scratches and scrapes as you reach" +
-                "\nthe opening at the other end." +
+        ui.mainTextPlace.setText("You force your way through the overgrown shrubs..." +
+                "\n\nYou get a few scratches and scrapes as you reach the opening at the other end." +
                 "\n\nYou lose 2 health.");
 
         // Re-assigning player health
@@ -946,9 +1056,7 @@ public class Story {
 
         //Main text in UI
         ui.mainTextPlace.setText("You change direction and take the path going left." +
-                "\n\nUp ahead you see a pack of wolves roaming along" +
-                "\nthe path." +
-                "\nThey notice you and freeze, staring at you..." +
+                "\n\nUp ahead you see a pack of wolves roaming along the path. They notice you and freeze, staring at you..." +
                 "\n\nOne of them runs straight towards you." +
                 "\n\nThe others scarper into the woods." +
                 "\n\nIt leaps towards you and bites your arm!" +
@@ -1126,14 +1234,10 @@ public class Story {
     public void mainStory6() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("As you continue along the road you start to see" +
-                "\nFenwyn castle in the distance." +
-                "\n\n 'There must be someone at the castle who can tell" +
-                "\nme what's going on'." +
-                "\n\nAs you get closer you notice there is someone" +
-                "\nahead on the path." +
-                "\n\nThey seem to be stumbling. Are they injured" +
-                "\nperhaps?");
+        ui.mainTextPlace.setText("As you continue along the road you start to see Fenwyn castle in the distance." +
+                "\n\n'There must be someone at the castle who can tell me what's going on'." +
+                "\n\nAs you get closer you notice there is someone ahead on the path." +
+                "\n\nThey seem to be stumbling. Are they injured perhaps?");
 
         // Buttons
         ui.choice1.setText("Call out");
@@ -1151,8 +1255,7 @@ public class Story {
         //Main text in UI
         ui.mainTextPlace.setText(" 'Hey!'" +
                 "\n\nYou catch the attention of the figure ahead." +
-                "\n\nAs they turn around you notice their eyes lifeless" +
-                "\nand dull." +
+                "\n\nAs they turn around you notice their eyes lifeless and dull." +
                 "\n\nThey scream and charge at you.");
 
         // Buttons
@@ -1298,7 +1401,6 @@ public class Story {
     public void usePotionZom() {
 
 
-
         if (player.potionCapacity > 0) {
             //Re-assigning player health
             player.playerHealth += 5;
@@ -1334,7 +1436,7 @@ public class Story {
         //Main text in UI
         ui.mainTextPlace.setText("'What was that... that thing?'" +
                 "\n\n'I need to find out what is happening.'" +
-                "\n\nMaybe i can get some answers at the castle.'");
+                "\n\n'Maybe I can get some answers at the castle.'");
 
         // Buttons
         ui.choice1.setText("Continue");
@@ -1355,8 +1457,7 @@ public class Story {
         ui.mainTextPlace.setText("You continue onwards until you come to Fenwyn Castle." +
                 "\n\nThe outer gate is open and unguarded." +
                 "\n\n'That's strange. Where are the guards?'" +
-                "\n\nMaybe i should find another way in that's not so" +
-                "\non display'.");
+                "\n\nMaybe i should find another way in?'");
 
         // Buttons
         ui.choice1.setText("Outer gate");
@@ -1376,10 +1477,8 @@ public class Story {
         ui.mainTextPlace.setText("You slowly enter through the gate." +
                 "\n\nAs you enter you look around the castle keep." +
                 "\n\nIt is eerily silent. There is nobody around." +
-                "\n\nYou can see the castle entrance across the castle" +
-                "\nkeep grounds." +
-                "\n\n'Maybe i should try and find the guards at the" +
-                "\nguard post?");
+                "\n\nYou can see the castle entrance across the castle keep grounds." +
+                "\n\n'Maybe i should try and find the guards at the guard post?");
 
         // Buttons
         ui.choice1.setText("Castle");
@@ -1419,8 +1518,7 @@ public class Story {
         //Main text in UI
         ui.mainTextPlace.setText("You decide to find another way into the castle." +
                 "\n\nYou follow the outer wall you looking for another way in." +
-                "\n\nConveniently you see a ladder leading up to the" +
-                "\nwatchtower." +
+                "\n\nConveniently you see a ladder leading up to the watchtower." +
                 "\n\nWill you climb it?");
         // Buttons
         ui.choice1.setText("Climb");
@@ -1437,13 +1535,10 @@ public class Story {
 
         //Main text in UI
         ui.mainTextPlace.setText("You climb up the rickety ladder." +
-                "\n\nAs you reach up and climb through the window" +
-                "\nyou see the watchtower has been wrecked. It" +
-                "\nlooks like a fight has gone on here." +
-                "\n\nYou climb through the window and drop to the" +
-                "\nfloor. There is a huge crash!" +
-                "\n\nThe damaged floor gives way beneath you and" +
-                "\nyou fall into the castle keep." +
+                "\n\nAs you reach up and climb through the window you see the watchtower has been wrecked." +
+                "It looks like a fight has gone on here." +
+                "\n\nYou climb through the window and drop to the floor. There is a huge crash!" +
+                "\n\nThe damaged floor gives way beneath you and you fall into the castle keep." +
                 "\n\nYou lose 2 health.");
 
         // Re-assigning player health
@@ -1469,8 +1564,7 @@ public class Story {
         ui.mainTextPlace.setText("'Ughh that hurt.'" +
                 "\n\nYou brush yourself off." +
                 "\n\n'So much for wanting to be discreet'." +
-                "\n\nAmong the rubble you landed in you see a red" +
-                "\nflask, surprisingly undamaged.");
+                "\n\nAmong the rubble you landed in you see a red flask, surprisingly undamaged.");
 
 
         // Buttons
@@ -1488,12 +1582,10 @@ public class Story {
     public void story8BeforeCastle() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("Across the castle keep you see an entrance into" +
-                "\nthe main castle chamber." +
+        ui.mainTextPlace.setText("Across the castle keep you see an entrance into the main castle chamber." +
                 "\n\n'Where is everyone?!'" +
                 "\n\n'Has the King gone too...?'" +
-                "\n\nA feeling of dread consumes you as you prepare" +
-                "\nto enter the castle.");
+                "\n\nA feeling of dread consumes you as you prepare to enter the castle.");
 
 
         // Buttons
@@ -1512,28 +1604,28 @@ public class Story {
     public void mainStory9() {
 
 
-            clip = new SoundEffects();
-            clip.PlaySound("evilPresence6.wav");
+        clip = new SoundEffects();
+        clip.PlaySound("evilPresence6.wav");
 
 
         //Main text in UI
-            ui.mainTextPlace.setText("You head into the castle." +
-                    "\n\nYou walk through the narrow halls and enter the main chamber room." +
-                    "\n\nThe room is huge and cold.." +
-                    "\n\nThe pillars tower above you." +
-                    "\n\nYou see the throne ahead of you." +
-                    "\n\nSomeone is sat in it..." +
-                    "\n\n'Is it the king?!'");
+        ui.mainTextPlace.setText("You head into the castle." +
+                "\n\nYou walk through the narrow halls and enter the main chamber room." +
+                "\n\nThe room is huge and cold.." +
+                "\n\nThe pillars tower above you." +
+                "\n\nYou see the throne ahead of you." +
+                "\n\nSomeone is sat in it..." +
+                "\n\n'Is it the king?!'");
 
-            // Buttons
-            ui.choice1.setText("Forward");
-            ui.choice2.setText("-");
-            ui.choice3.setText("-");
+        // Buttons
+        ui.choice1.setText("Forward");
+        ui.choice2.setText("-");
+        ui.choice3.setText("-");
 
-            // button assign
-            game.position1 = "story9Forward";
-            game.position2 = "";
-            game.position3 = "";
+        // button assign
+        game.position1 = "story9Forward";
+        game.position2 = "";
+        game.position3 = "";
 
 
     }
@@ -1544,11 +1636,9 @@ public class Story {
         clip.PlaySound("evilPresence6.wav");
 
         //Main text in UI
-        ui.mainTextPlace.setText("As you get closer you notice it is the King but" +
-                "\nhe looks like he's been dead for quite some time." +
+        ui.mainTextPlace.setText("As you get closer you notice it is the King but he looks like he's been dead for quite some time." +
                 "\n\nYou feel a sense of sadness.." +
-                "\n\nIt is quickly drown out by fear as the dead Kings" +
-                "\neyes start to glow." +
+                "\n\nIt is quickly drown out by fear as the dead Kings eyes start to glow." +
                 "\n\nHe slowly rises from his throne.");
 
         // Buttons
@@ -1777,10 +1867,9 @@ public class Story {
 
         //Main text in UI
         ui.mainTextPlace.setText("A moment of silence comes and goes." +
-                "\n\nBefore you even have time to gather yourself," +
-                "\nscreeches make their way to the main chamber" +
-                "\nroom along the narrow corridors." +
-                "\n\n 'I think it's time to get out of here!'");
+                "\n\nBefore you even have time to gather yourself, screeches make their way to the main chamber" +
+                "room along the narrow corridors." +
+                "\n\n'I think it's time to get out of here!'");
 
         // Buttons
         ui.choice1.setText("Run");
@@ -1797,13 +1886,10 @@ public class Story {
     public void story10Outside() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("Back outside you slam the door behind you." +
-                "\nThe sun has set and night crawls in." +
-                "\nThe sky gives off a flash followed by a crash of" +
-                "\nthunder." +
-                "\n\n 'The dead are somehow back from the dead?!'" +
-                "\n\n 'I need to find someone who is actually alive" +
-                "\nand find out what is happening!'" +
+        ui.mainTextPlace.setText("Back outside you slam the door behind you. The sun has set and night crawls in." +
+                "The sky gives off a flash followed by a crash of thunder." +
+                "\n\n'The dead are somehow back from the dead?!'" +
+                "\n\n'I need to find someone who is actually alive and find out what is happening!'" +
                 "\n\nSomething starts banging at the door behind you.");
 
         // Buttons
@@ -1824,8 +1910,7 @@ public class Story {
         //Main text in UI
         ui.mainTextPlace.setText("As you head for the keep exit the sky flashes.." +
                 "\n\nLightning crashes down and strikes you!" +
-                "\n\nYou are thrown back slamming into the castle" +
-                "\nwall." +
+                "\n\nYou are thrown back slamming into the castle wall." +
                 "\n\nYou are unconscious.");
 
         // Buttons
@@ -1843,12 +1928,11 @@ public class Story {
     public void story10Wake() {
 
         //Main text in UI
-        ui.mainTextPlace.setText(" 'Ughh what happened...?'" +
+        ui.mainTextPlace.setText("'Ughh what happened...?'" +
                 "\n\nYou stand up, feeling surprisingly energized." +
                 "\n\nA blue surge rushes through your hand." +
                 "\n\nAs you stand up you notice you are slowly being" +
-                "\nsurrounded by the town folk, or so they used to" +
-                "\nsbe." +
+                "\nsurrounded by the town folk, or so they used to sbe." +
                 "\n\nThis is one fight you cannot win...");
 
         // Re-assigning player health
@@ -2076,6 +2160,7 @@ public class Story {
             game.position1 = "continueToMainStory11";
             game.position2 = "";
             game.position3 = "";
+
         } else if (player.specialAttack == 1) {
 
             //Main text in UI
@@ -2114,13 +2199,10 @@ public class Story {
 
         //Main text in UI
         ui.mainTextPlace.setText("All of the enemies have been defeated." +
-                "\n\n 'Wow, that was incredible. I can feel the power " +
-                "\nrushing through me.'" +
-                "\n\n 'But I don't have time to question this, I must flee" +
-                "\nbefore more come.'" +
-                "\n\nYou now have access to your Special ability." +
-                "\nYou can call forth the strength of the gods to" +
-                "\ninstantly kill any enemy." +
+                "\n\n 'Wow, that was incredible. I can feel the power rushing through me.'" +
+                "\n\n 'But I don't have time to question this, I must flee before more come.'" +
+                "\n\nYou now have access to your Special ability. You can call forth the strength of the gods to" +
+                "instantly kill any enemy." +
                 "\n\nHowever, it comes at a cost...");
 
         // Buttons
@@ -2138,8 +2220,8 @@ public class Story {
     public void story11Exit() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("Using such power is not safe and has a 1/3" +
-                "\nchance of failing. If it fails, you die.");
+        ui.mainTextPlace.setText("Using such power is not safe and has a 1/3 chance of failing." +
+                "\n\nIf it fails, you die.");
 
         // Buttons
         ui.choice1.setText(">");
@@ -2157,9 +2239,7 @@ public class Story {
     public void mainStory12() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("You flee as quickly as possible back out of the" +
-                "\ncastle keep and head along the path south " +
-                "\nof the castle." +
+        ui.mainTextPlace.setText("You flee as quickly as possible back out of the castle keep and head along the path south of the castle." +
                 "\n\nAfter walking for some time you come to a split in the road." +
                 "\n\nThere is a sign..." +
                 "\n\n <---CITY | VILLAGE--->");
@@ -2181,10 +2261,8 @@ public class Story {
 
         //Main text in UI
         ui.mainTextPlace.setText("You travel along the path to the village." +
-                "\n\nAs you approach the village you notice bodies" +
-                "\nscattered all over." +
-                "\n\nIt seems as if the village suffered the same fate as" +
-                "\nyours." +
+                "\n\nAs you approach the village you notice bodies scattered all over." +
+                "\n\nIt seems as if the village suffered the same fate as yours." +
                 "\n\n'I must continue with caution.'");
 
         // Buttons
@@ -2202,12 +2280,9 @@ public class Story {
     public void enterVillage() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("You slowly make your way into the center of" +
-                "\nthe village, avoiding the bodies as you pass." +
-                "\n\nAs you reach the center see something move" +
-                "\nquickly from the corner of your eye." +
-                "\n\nYou turn to see a door on one of the houses" +
-                "\nslowing to a stop.");
+        ui.mainTextPlace.setText("You slowly make your way into the center of the village, avoiding the bodies as you pass." +
+                "\n\nAs you reach the center see something move quickly from the corner of your eye." +
+                "\n\nYou turn to see a door on one of the houses slowing to a stop.");
 
         // Buttons
         ui.choice1.setText("Investigate");
@@ -2225,8 +2300,7 @@ public class Story {
 
         //Main text in UI
         ui.mainTextPlace.setText("'I have a bad feeling about this...'" +
-                "\n\nYou quietly approach the house, sword at the" +
-                "\nready." +
+                "\n\nYou quietly approach the house, sword at the ready." +
                 "\n\n'Maybe I should look through the window first?'");
 
         // Buttons
@@ -2247,8 +2321,7 @@ public class Story {
         ui.mainTextPlace.setText("The door creaks as you open it and head in." +
                 "\n\nYou look around the room but it has been trashed." +
                 "\n\nThere is nothing here." +
-                "\n\nAs you go to head out you notice someone" +
-                "\nstanding outside through the window." +
+                "\n\nAs you go to head out you notice someone standing outside through the window." +
                 "\n\nIt seems to be a child.");
 
         // Buttons
@@ -2266,8 +2339,7 @@ public class Story {
     public void villageChildFight() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("You step out through the door and without" +
-                "\nhesitation the child runs towards you and attacks!" +
+        ui.mainTextPlace.setText("You step out through the door and without hesitation the child runs towards you and attacks!" +
                 "\n\nTaken off guard by it being a child you freeze." +
                 "\n\nShe jumps towards you, scratching and biting." +
                 "\n\nYou lose 1 health.");
@@ -2534,12 +2606,9 @@ public class Story {
     public void villageWinChildBattle() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("'That was just a child! Does this evil have no" +
-                "\nlimit?'" +
-                "\n\nThe noise from the fight has attracted some" +
-                "\nunwanted attention." +
-                "\n\nThe bodies around the village have started to" +
-                "\nrise." +
+        ui.mainTextPlace.setText("'That was just a child! Does this evil have no limit?'" +
+                "\n\nThe noise from the fight has attracted some unwanted attention." +
+                "\n\nThe bodies around the village have started to rise." +
                 "\n\nThis is bad...'");
 
 
@@ -2562,8 +2631,7 @@ public class Story {
     public void houseHide() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("You duck down and hide against the wall and" +
-                "\npeer through the open door." +
+        ui.mainTextPlace.setText("You duck down and hide against the wall and peer through the open door." +
                 "\n\n'It seems to be a child..." +
                 "\n\n'What is she doing just standing there?'");
 
@@ -2626,11 +2694,9 @@ public class Story {
     public void houseBack() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("You try to slip out the back way but the door" +
-                "\nis blocked by broken furniture." +
+        ui.mainTextPlace.setText("You try to slip out the back way but the door is blocked by broken furniture." +
                 "\n\n'Guess that only leaves the front then...'" +
-                "\n\nUnless I clear a path. But the noise will surely" +
-                "\nattract attention.");
+                "\n\nUnless I clear a path. But the noise will surely attract attention.");
 
         // Buttons
         ui.choice1.setText("Front");
@@ -2776,10 +2842,8 @@ public class Story {
     public void villageLookWindow() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("You peer through the window just to the side of" +
-                "\nthe door." +
-                "\n\nYou see something but the dust makes it hard to" +
-                "\nsee.");
+        ui.mainTextPlace.setText("You peer through the window just to the side of the door." +
+                "\n\nYou see something but the dust makes it hard to see.");
 
         // Buttons
         ui.choice1.setText("Wipe");
@@ -2824,10 +2888,8 @@ public class Story {
 
         //Main text in UI
         ui.mainTextPlace.setText("You stand up and ready your sword." +
-                "\n\nThe noise from that attack seems to have" +
-                "\nattracted some unwanted attention." +
-                "\n\nThe bodies around the village have started to" +
-                "\nrise." +
+                "\n\nThe noise from that attack seems to have attracted some unwanted attention." +
+                "\n\nThe bodies around the village have started to rise." +
                 "\n\n'This is bad...'");
 
         // Buttons
@@ -3112,8 +3174,7 @@ public class Story {
         ui.mainTextPlace.setText("You have decimated all the undead." +
                 "\n\nHeat rises from the skin on your arms." +
                 "\n\n'That was intense.'" +
-                "\n\nYou sit down on the ground, exhausted from" +
-                "\nthat attack." +
+                "\n\nYou sit down on the ground, exhausted from that attack." +
                 "\n\n'Something moves in the corner of your eye.." +
                 "\n\n'Not again...''");
 
@@ -3206,11 +3267,9 @@ public class Story {
         //Main text in UI
         ui.mainTextPlace.setText("'Who r' ya callin old, boy?'" +
                 "\n\n'You're alive?!' you gasp." +
-                "\n\n'Well o' course I am. Haven't tried to kill you" +
-                "\nyet, av I?' he replies." +
+                "\n\n'Well o' course I am. Haven't tried to kill you yet, av I?' he replies." +
                 "\n\n'But how have you stayed alive?' you ask." +
-                "\n\n'I hid in me basement. But when i heard you" +
-                "\nmakin all that commotion I came to see.'");
+                "\n\n'I hid in me basement. But when i heard you makin all that commotion I came to see.'");
 
         // Buttons
         ui.choice1.setText(">");
@@ -3229,8 +3288,7 @@ public class Story {
         //Main text in UI
         ui.mainTextPlace.setText("'I been hidin in me basement waiting for help.'" +
                 "\n\n'I done never seen nobody with powers like that.'" +
-                "\n\n'That power you possess. Are you a god?'" +
-                "\nhe asks.'");
+                "\n\n'That power you possess. Are you a god?' he asks.'");
 
         // Buttons
         ui.choice1.setText("Yes");
@@ -3247,8 +3305,7 @@ public class Story {
     public void villageStoryCitizenYes() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("'Well i'll be damned! The gods have sent" +
-                "\none of their own to save us!'" +
+        ui.mainTextPlace.setText("'Well i'll be damned! The gods have sent one of their own to save us!'" +
                 "\n\n'The world must know this evil will be stopped.'");
 
         player.setGodStatus(1);
@@ -3269,8 +3326,7 @@ public class Story {
 
         //Main text in UI
         ui.mainTextPlace.setText("'Sure looked godly to me, boy.'" +
-                "\n\n'But to hear you say no... can't say I aint" +
-                "\ndisappointed.'" +
+                "\n\n'But to hear you say no... can't say I aint disappointed.'" +
                 "\n\n'There is an evil plaguing the land you see.'");
 
         // Buttons
@@ -3288,12 +3344,8 @@ public class Story {
     public void villageStoryCitizenEvil() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("'I don't know to much about nothin, but what" +
-                "\nI do know about anything I know somthin," +
-                "\nyou see?'" +
-                "\n\n'Somthin I do know is we were attacked by a" +
-                "\nshadow. It killed everyone in it's path, except" +
-                "\nthey didn't stay dead.'" +
+        ui.mainTextPlace.setText("'I don't know to much about nothin, but what I do know about anything I know somthin, you see?'" +
+                "\n\n'Somthin I do know is we were attacked by a shadow. It killed everyone in it's path, except they didn't stay dead.'" +
                 "\n\n'Some sort o' magic if I do say so myself.'");
 
         // Buttons
@@ -3311,11 +3363,9 @@ public class Story {
     public void villageStoryCitizenShadow() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("'Yes yes a shadow. Moved like nothin I seen" +
-                "\nbefore. It had a dark aura illuminating from it.'" +
+        ui.mainTextPlace.setText("'Yes yes a shadow. Moved like nothin I seen before. It had a dark aura illuminating from it.'" +
                 "\n\n'I got a good look at it I did...'" +
-                "\n\n'The aura would glow red before the dead would" +
-                "\nrise.'" +
+                "\n\n'The aura would glow red before the dead would rise.'" +
                 "\n\n'It got to be the cause if I do so say myself.'");
 
         // Buttons
@@ -3334,12 +3384,9 @@ public class Story {
     public void villageStoryCitizenEnd() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("'I came here to try and find out what's going on." +
-                "\nYou are the only living person i have come across so far.'" +
-                "\n\n'Well boy. Seems like you and those powers could" +
-                "\nfix this. What's next?' he asks." +
-                "\n\nI'm going to head to the next town.' you reply." +
-                "\nA friend of mine lives there, Leon.'");
+        ui.mainTextPlace.setText("'I came here to try and find out what's going on. You are the only living person i have come across so far.'" +
+                "\n\n'Well boy. Seems like you and those powers could fix this. What's next?' he asks." +
+                "\n\nI'm going to head to the next town.' you reply. A friend of mine lives there, Leon.'");
 
         // Buttons
         ui.choice1.setText("Invite");
@@ -3357,9 +3404,7 @@ public class Story {
 
         //Main text in UI
         ui.mainTextPlace.setText("'Do you want to come with me, old man? you ask." +
-                "\n\n'Keep at it with the old man, boy and the" +
-                "\nundead will not be the only thing you need" +
-                "\nto worry about.'" +
+                "\n\n'Keep at it with the old man, boy and the undead will not be the only thing you need to worry about.'" +
                 "\n\n'But no, I'll only slow yer down.'" +
                 "\n\n'Promise to come back and get me, you hear?'");
 
@@ -3379,13 +3424,9 @@ public class Story {
     public void villageStoryCitizenLeave() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("'I need to head out. Are you going to be alright" +
-                "\nhere old man?'" +
-                "\n\n'Yes, yes i'll be fine.' he replied." +
-                "\nYou cleared out most of those creatures and i have" +
-                "\nenough food in my basement to last a lifetime!" +
-                "\n\n'Just promise to come back and get me once all" +
-                "\nthis is over.'");
+        ui.mainTextPlace.setText("'I need to head out. Are you going to be alright here old man?'" +
+                "\n\n'Yes, yes i'll be fine.' he replied. You cleared out most of those creatures and i have enough food in my basement to last a lifetime!" +
+                "\n\n'Just promise to come back and get me once all this is over.'");
 
         // Buttons
         ui.choice1.setText("Yes");
@@ -3403,9 +3444,7 @@ public class Story {
 
         //Main text in UI
         ui.mainTextPlace.setText("'Okay don't forget now.'" +
-                "\n\nThe old man walks back to his basement, saying" +
-                "\nhe's glad you're alive and mumbling about" +
-                "\ncoming back for him." +
+                "\n\nThe old man walks back to his basement, saying he's glad you're alive and mumbling about coming back for him." +
                 "\n\nHe turns a corner and is out of sight.");
 
         // Buttons
@@ -3427,8 +3466,7 @@ public class Story {
                 "\n\nI'll outlive this evil and i'll outlive you!'" +
                 "\n\n'Running around blowing things up with lightning.'" +
                 "\n\n'You'll blow yer self up before too long. HA!'" +
-                "\n\nThe old man walks away mumbling until he" +
-                "\nturns a corner and is out of sight.");
+                "\n\nThe old man walks away mumbling until he turns a corner and is out of sight.");
 
         // Buttons
         ui.choice1.setText("Leave");
@@ -3464,13 +3502,9 @@ public class Story {
     public void villageLeave() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("'I need to head out. Are you going to be alright" +
-                "\nhere old man?'" +
-                "\n\n'Yes yes i'll be fine. You cleared out most of" +
-                "\nthose creatures and i have enough food in" +
-                "\nmy basement to last a lifetime!" +
-                "\n\n'Just promise to come back and get me once all this" +
-                "\nis over.'");
+        ui.mainTextPlace.setText("'I need to head out. Are you going to be alright here old man?'" +
+                "\n\n'Yes yes i'll be fine. You cleared out most of those creatures and i have enough food in my basement to last a lifetime!" +
+                "\n\n'Just promise to come back and get me once all this is over.'");
 
         // Buttons
         ui.choice1.setText("Continue");
@@ -3488,11 +3522,9 @@ public class Story {
     public void villageRun() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("'There are too many to fight head on.' you say to" +
-                "\nyourself." +
+        ui.mainTextPlace.setText("'There are too many to fight head on.' you say to yourself." +
                 "\n\nYou make a run for it out of the village!" +
-                "\n\nAs you turn around to run you notice you are" +
-                "\nsurrounded." +
+                "\n\nAs you turn around to run you notice you are surrounded." +
                 "\n\n'I guess I have no choice...'" +
                 "\n\nYou reach for your sword.");
 
@@ -3529,8 +3561,7 @@ public class Story {
     public void villageIgnore() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("You decide to ignore it and head into the local" +
-                "\nstore." +
+        ui.mainTextPlace.setText("You decide to ignore it and head into the local store." +
                 "\n\n'Maybe I can find some supplies in here.'");
 
         // Buttons
@@ -3551,8 +3582,7 @@ public class Story {
         ui.mainTextPlace.setText("In the store you find it has been trashed." +
                 "\n\nIn the back you find the remains of a villager." +
                 "\n\nThey seem to be holding onto something." +
-                "\n\n'It is not wise to steal from the dead.' you say" +
-                "\nto yourself.");
+                "\n\n'It is not wise to steal from the dead.' you say to yourself.");
 
         // Buttons
         ui.choice1.setText("Take");
@@ -3569,13 +3599,10 @@ public class Story {
     public void villageStoreTake() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("You decide to check the corpse remains and" +
-                "\nsee what they are holding." +
+        ui.mainTextPlace.setText("You decide to check the corpse remains and see what they are holding." +
                 "\n\nIt seems to be some sort of necklace." +
-                "\n\nAs you reach in and grab it your whole body" +
-                "\nbecomes cold." +
-                "\n\nYou become disorientated and your surroundings" +
-                "\nseem to change.");
+                "\n\nAs you reach in and grab it your whole body becomes cold." +
+                "\n\nYou become disorientated and your surroundings seem to change.");
 
         // Buttons
         ui.choice1.setText(">");
@@ -3595,13 +3622,10 @@ public class Story {
         clip.PlaySound("noise.wav");
 
         //Main text in UI
-        ui.mainTextPlace.setText("You have a vision of a shadowy figure rising" +
-                "\nfrom a crypt." +
-                "\n\nYou see images of people suffering followed by" +
-                "\nflashes or darkness." +
+        ui.mainTextPlace.setText("You have a vision of a shadowy figure rising from a crypt." +
+                "\n\nYou see images of people suffering followed by flashes or darkness." +
                 "\n\nYour whole body itches." +
-                "\n\nA high pitch screech pierces your ears until you" +
-                "\ncannot take it any more.");
+                "\n\nA high pitch screech pierces your ears until you cannot take it any more.");
 
         // Buttons
         ui.choice1.setText(">");
@@ -3623,9 +3647,7 @@ public class Story {
         //Main text in UI
         ui.mainTextPlace.setText("You scream in pain wishing it would stop." +
                 "\n\nThe pain is getting worse." +
-                "\n\nJust as you think you're about to die," +
-                "\neverything stops and a voice inside your head" +
-                "\nwhispers..." +
+                "\n\nJust as you think you're about to die, everything stops and a voice inside your head whispers..." +
                 "\n\n'Your soul is mine." +
                 "\n\nYou collapse unconscious.");
 
@@ -3649,8 +3671,7 @@ public class Story {
         ui.mainTextPlace.setText("You wake up, dazed and confused." +
                 "\n\n''Ughh what was that?'" +
                 "\n\nYou can't help but feel a sense of emptiness." +
-                "\n\nYou rise to your feet and notice the necklace" +
-                "\non the floor next to a potion." +
+                "\n\nYou rise to your feet and notice the necklace on the floor next to a potion." +
                 "\n\n'I knew nothing good would come of that'.");
 
         // Buttons
@@ -3671,9 +3692,7 @@ public class Story {
         ui.mainTextPlace.setText("You decide to head back out.." +
                 "\n\nBack outside you see the sky has darkened." +
                 "\n\nVisions of death haunt your memories." +
-                "\n\nWith each flash of these vivid images you" +
-                "\nnotice the bodies around the village start to" +
-                "\ntwitch and rise to their feet.");
+                "\n\nWith each flash of these vivid images you notice the bodies around the village start to twitch and rise to their feet.");
 
         // Buttons
         ui.choice1.setText("Continue");
@@ -3692,8 +3711,7 @@ public class Story {
     public void mainStory12City() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("The city is large. You may have a better chance" +
-                "\nof finding answers from someone who is alive." +
+        ui.mainTextPlace.setText("The city is large. You may have a better chance of finding answers from someone who is alive." +
                 "\n\nOr find more undead...");
 
         // Buttons
@@ -3711,8 +3729,7 @@ public class Story {
     public void continueToCity() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("As you get close to the city you can see the city" +
-                "\nhas been badly damaged." +
+        ui.mainTextPlace.setText("As you get close to the city you can see the city has been badly damaged." +
                 "\n\nIt looks like a hard fought war has gone on here." +
                 "\n\nYou approach the city gates." +
                 "\n\nIt's quiet...");
@@ -3759,8 +3776,7 @@ public class Story {
         ui.mainTextPlace.setText(" 'That sounds like the screams of a woman!'" +
                 "\n\n 'I must help them, quickly!'" +
                 "\n\nYou take off in the direction of the scream." +
-                "\n\nRunning through the street you hear the scream" +
-                "\nagain, this time much closer.");
+                "\n\nRunning through the street you hear the scream again, this time much closer.");
 
         // Buttons
         ui.choice1.setText(">");
@@ -3777,8 +3793,7 @@ public class Story {
     public void innerCityWoman() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("As you turn the corner of the street you see a" +
-                "\nwoman being cornered by 3 undead!" +
+        ui.mainTextPlace.setText("As you turn the corner of the street you see a woman being cornered by 3 undead!" +
                 "\n\nShe needs help, quickly.");
 
         // Buttons
@@ -3796,10 +3811,8 @@ public class Story {
     public void innerCityHelp() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("Without hesitation you let out a roar and charge" +
-                "\nin!" +
-                "\n\nYou rush the first enemy and slam into them" +
-                "\nsending them flying through the air." +
+        ui.mainTextPlace.setText("Without hesitation you let out a roar and charge in!" +
+                "\n\nYou rush the first enemy and slam into them sending them flying through the air." +
                 "\n\nThe remaining 2 run towards you and attack!");
 
         // Buttons
@@ -3817,11 +3830,8 @@ public class Story {
     public void innerCityCounter() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("Before the first enemy can attack you, you dash" +
-                "\nforward and strike them down with a forceful" +
-                "\nswing of your sword." +
-                "\n\nThis leaves you open and the second enemy" +
-                "\nslashes at you!" +
+        ui.mainTextPlace.setText("Before the first enemy can attack you, you dash forward and strike them down with a forceful swing of your sword." +
+                "\n\nThis leaves you open and the second enemy slashes at you!" +
                 "\n\nYou loose 1 health.");
 
         // Re-assigning player health
@@ -3854,9 +3864,7 @@ public class Story {
 
         //Main text in UI
         ui.mainTextPlace.setText("Both enemies attack you from each side." +
-                "\n\nYou block each attack in quick succession from" +
-                "\nleft to right but you lose grip of your sword" +
-                "\nfrom the force and drop it." +
+                "\n\nYou block each attack in quick succession from left to right but you lose grip of your sword from the force and drop it." +
                 "\n\nThey attack again!" +
                 "\n\nYou are defenseless.");
 
@@ -4010,11 +4018,9 @@ public class Story {
     public void innerCityThrowSword() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("You wind you arm back and hurl your sword" +
-                "\nThrough the air!" +
+        ui.mainTextPlace.setText("You wind you arm back and hurl your sword Through the air!" +
                 "\n\nIt impales the enemy pinning them to the ground." +
-                "\n\nThe first enemy you knocked down rises from the" +
-                "\nground and thrusts its sword towards your back!");
+                "\n\nThe first enemy you knocked down rises from the ground and thrusts its sword towards your back!");
 
 
         // Buttons
@@ -4032,8 +4038,8 @@ public class Story {
     public void innerCityDefend2() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("You parry the incoming attack and strike" +
-                "\nthe enemy down with ease.");
+        ui.mainTextPlace.setText("You parry the incoming attack and strike the enemy down with ease." +
+                "\n\nThe first enemy you knocked down rises from the ground and thrusts its sword towards your back!");
 
 
         // Buttons
@@ -4053,10 +4059,8 @@ public class Story {
 
         //Main text in UI
         ui.mainTextPlace.setText("As the blade is about to pierce you" +
-                "\nthe enemy erupts into a ball of flames and turns " +
-                "\nto ash." +
-                "\n\nYou look around to your surprise and see the" +
-                "\nsmoke coming from the woman's hands..." +
+                "\nthe enemy erupts into a ball of flames and turns to ash." +
+                "\n\nYou look around to your surprise and see the smoke coming from the woman's hands..." +
                 "\n\nThis is no ordinary woman.");
 
 
@@ -4074,16 +4078,14 @@ public class Story {
 
     public void innerCitySavedWoman() {
 
-        player.setSavedElla(1);
+        player.savedElla = player.savedElla += 1;
 
         //Main text in UI
-        ui.mainTextPlace.setText("You rush over to the woman and catch her as" +
-                "\nshe collapses." +
+        ui.mainTextPlace.setText("You rush over to the woman and catch her as she collapses." +
                 "\n\n'Who are you?!'" +
                 "\n\nShe lets out a breath of relief." +
                 "\n\n'My name is Ella. I am the sorceress of this land...'" +
-                "\n\nShe coughs up blood and is starting lose colour" +
-                "\nin her skin.");
+                "\n\nShe coughs up blood and is starting lose colour in her skin.");
 
 
         // Buttons
@@ -4100,12 +4102,11 @@ public class Story {
 
     public void innerCitySavedWomanSpeak() {
 
+        player.setSavedElla(1);
+
         //Main text in UI
-        ui.mainTextPlace.setText("'Please hold on!'" +
-                "\nShe doesn't have much time left..." +
-                "\n\n'Can you tell me what is happening here?'" +
-                "\nThe woman tries to speak but cannot gather" +
-                "\nthe energy." +
+        ui.mainTextPlace.setText("'Please hold on!' She doesn't have much time left..." +
+                "\n\n'Can you tell me what is happening here?' The woman tries to speak but cannot gather the energy." +
                 "\n\nWith her final breath she manages to whisper..." +
                 "\n\n'Calyx. n...n...necroman...'" +
                 "\n\nShe has died.");
@@ -4126,13 +4127,9 @@ public class Story {
     public void innerCityWomanDied() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("'Calyx? Who is that?'" +
-                "\n'I should try and find this Calyx for answers.'" +
-                "\n\n'It was important enough for Ella to say" +
-                "\nwith her dying breath.'" +
-                "\n\nBefore you can decide what to do from here" +
-                "\nyou see a roaming horde of undead heading" +
-                "\ntowards you.");
+        ui.mainTextPlace.setText("'Calyx? Who is that?' 'I should try and find this Calyx for answers.'" +
+                "\n\n'It was important enough for Ella to say with her dying breath.'" +
+                "\n\nBefore you can decide what to do from here you see a roaming horde of undead heading towards you.");
 
         // Buttons
         ui.choice1.setText("Run");
@@ -4189,7 +4186,7 @@ public class Story {
     // Special attack Random decider (Guaranteed to be successful this instance)
     public void innerCityHordeSpecialResult() {
 
-        if(player.specialAttack == 0) {
+        if (player.specialAttack == 0) {
 
 
             //Main text in UI
@@ -4226,7 +4223,7 @@ public class Story {
 
         //Main text in UI
         ui.mainTextPlace.setText("The power of the gods saved you this time." +
-                "\nYou decide to leave the city and head for the city gates.");
+                "\n\nYou decide to leave the city and head for the city gates.");
 
         // Buttons
         ui.choice1.setText("Continue");
@@ -4262,8 +4259,7 @@ public class Story {
 
         //Main text in UI
         ui.mainTextPlace.setText("You quickly dash left through the narrow alley." +
-                "\n\nThe alley splits again and you can only go left or" +
-                "\nright.");
+                "\n\nThe alley splits again and you can only go left or right.");
 
         // Buttons
         ui.choice1.setText("Left");
@@ -4280,11 +4276,9 @@ public class Story {
 
         //Main text in UI
         ui.mainTextPlace.setText("You dart left but it is blocked by a house." +
-                "\n\nYou run at full speed through the door and crash" +
-                "\nthrough taking minor damage as you do." +
+                "\n\nYou run at full speed through the door and crash through taking minor damage as you do." +
                 "\n\nYou lose 1 health." +
-                "\n\nYou happen to see potions on the table and grab" +
-                "\nthem as you leave." +
+                "\n\nYou happen to see potions on the table and grab them as you leave." +
                 "\n\nYou receive potion x2!");
 
         //Re-assigning player health after damage
@@ -4312,10 +4306,8 @@ public class Story {
     public void innerCityAlleyRight() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("You quickly turn right and crash into a vendor" +
-                "\nstall." +
-                "\n\nThe stall happens to be full of remedies and" +
-                "\npotions!" +
+        ui.mainTextPlace.setText("You quickly turn right and crash into a vendor stall." +
+                "\n\nThe stall happens to be full of remedies and potions!" +
                 "\n\nYou receive 2x potion!");
 
         clip = new SoundEffects();
@@ -4338,10 +4330,8 @@ public class Story {
     public void innerCityRight() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("You dash right to avoid the undead." +
-                "\nThe long road to the gate is clear!" +
-                "\n\nAs you are running towards the gates an undead" +
-                "\ncrashes through a house door and attacks you!");
+        ui.mainTextPlace.setText("You dash right to avoid the undead. The long road to the gate is clear!" +
+                "\n\nAs you are running towards the gates an undead crashes through a house door and attacks you!");
 
         // Buttons
         ui.choice1.setText("Fight");
@@ -4574,7 +4564,7 @@ public class Story {
         } else if (player.specialAttack == 1) {
 
             //Main text in UI
-            ui.mainTextPlace.setText("The enemy has been obliterated.");
+            ui.mainTextPlace.setText("You have been obliterated.");
 
             // Buttons
             ui.choice1.setText("Continue");
@@ -4609,8 +4599,7 @@ public class Story {
         //Main text in UI
         ui.mainTextPlace.setText("You make it to the back gates!" +
                 "\n\nBefore you can exit you feel the ground shake." +
-                "\n\nYou turn around to see a troll come crashing" +
-                "\nthrough the houses and coming towards you!" +
+                "\n\nYou turn around to see a troll come crashing through the houses and coming towards you!" +
                 "\n\nReady yourself!");
 
         // Buttons
@@ -4730,6 +4719,110 @@ public class Story {
 
     }
 
+    public void usePotionTroll() {
+
+        if (player.potionCapacity > 0) {
+            //Re-assigning player health
+            player.playerHealth += 5;
+            ui.hpLabelNum.setText(Integer.toString(player.getPlayerHealth()));
+            player.potionCapacity -= 1;
+            ui.potionCapNum.setText(Integer.toString(player.potionCapacity));
+
+            ui.mainTextPlace.setText("You use a potion!");
+
+
+        } else {
+            ui.mainTextPlace.setText("You have " + player.getPotionCapacity() + " potions.");
+
+        }
+
+        // Buttons
+        ui.choice1.setText("Attack");
+        ui.choice2.setText("Potion");
+        ui.choice3.setText("Special");
+
+        // Button assign
+        game.position1 = "attackTroll";
+        game.position2 = "usePotionTroll";
+        game.position3 = "useSpecialTroll";
+    }
+
+    public void useSpecialTroll() {
+
+        //Main text in UI
+        ui.mainTextPlace.setText("The sky growls and lights up." +
+                "\n\nA blue surge runs through your veins." +
+                "\n\nYou throw your sword into the air.");
+
+
+        // Buttons
+        ui.choice1.setText("Strike");
+        ui.choice2.setText("-");
+        ui.choice3.setText("-");
+
+        // button assign
+        game.position1 = "useSpecialTroll2";
+        game.position2 = "";
+        game.position3 = "";
+    }
+
+    public void useSpecialTroll2() {
+
+        //Main text in UI
+        ui.mainTextPlace.setText("You catch your sword and slam it into the ground." +
+                "\n\nLightning comes crashing down around you.");
+
+        // Sound effect
+        clip = new SoundEffects();
+        clip.PlaySound("specialAttack.wav");
+
+        // Buttons
+        ui.choice1.setText(">");
+        ui.choice2.setText("-");
+        ui.choice3.setText("-");
+
+        // button assign
+        game.position1 = "specialTrollResult";
+        game.position2 = "";
+        game.position3 = "";
+    }
+
+    // Special attack Random decider
+    public void specialTrollResult() {
+
+        if (player.specialAttack < 2) {
+
+
+            //Main text in UI
+            ui.mainTextPlace.setText("The enemy has been obliterated.");
+
+            // Buttons
+            ui.choice1.setText("Continue");
+            ui.choice2.setText("-");
+            ui.choice3.setText("-");
+
+            // button assign
+            game.position1 = "winTrollBattle";
+            game.position2 = "";
+            game.position3 = "";
+        }  else {
+            //Main text in UI
+            ui.mainTextPlace.setText("You have been obliterated. ");
+
+            // Buttons
+            ui.choice1.setText("Continue");
+            ui.choice2.setText("-");
+            ui.choice3.setText("-");
+
+            // button assign
+            game.position1 = "winTrollBattle";
+            game.position2 = "";
+            game.position3 = "";
+        }
+
+
+    }
+
     public void winTrollBattle() {
 
         //Main text in UI
@@ -4790,131 +4883,11 @@ public class Story {
         game.position3 = "";
     }
 
-    public void usePotionTroll() {
-
-        if (player.potionCapacity > 0) {
-            //Re-assigning player health
-            player.playerHealth += 5;
-            ui.hpLabelNum.setText(Integer.toString(player.getPlayerHealth()));
-            player.potionCapacity -= 1;
-            ui.potionCapNum.setText(Integer.toString(player.potionCapacity));
-
-            ui.mainTextPlace.setText("You use a potion!");
-
-
-        } else {
-            ui.mainTextPlace.setText("You have " + player.getPotionCapacity() + " potions.");
-
-        }
-
-        // Buttons
-        ui.choice1.setText("Attack");
-        ui.choice2.setText("Potion");
-        ui.choice3.setText("Special");
-
-        // Button assign
-        game.position1 = "attackTroll";
-        game.position2 = "usePotionTroll";
-        game.position3 = "useSpecialTroll";
-    }
-
-    public void useSpecialTroll() {
-
-        //Main text in UI
-        ui.mainTextPlace.setText("The sky growls and lights up." +
-                "\n\nA blue surge runs through your veins." +
-                "\n\nYou throw your sword into the air.");
-
-
-        // Buttons
-        ui.choice1.setText("Strike");
-        ui.choice2.setText("-");
-        ui.choice3.setText("-");
-
-        // button assign
-        game.position1 = "useSpecialUndead2";
-        game.position2 = "";
-        game.position3 = "";
-    }
-
-    public void useSpecialTroll2() {
-
-        //Main text in UI
-        ui.mainTextPlace.setText("You catch your sword and slam it into the ground." +
-                "\n\nLightning comes crashing down around you.");
-
-        // Sound effect
-        clip = new SoundEffects();
-        clip.PlaySound("specialAttack.wav");
-
-        // Buttons
-        ui.choice1.setText(">");
-        ui.choice2.setText("-");
-        ui.choice3.setText("-");
-
-        // button assign
-        game.position1 = "specialTrollResult";
-        game.position2 = "";
-        game.position3 = "";
-    }
-
-    // Special attack Random decider (Guaranteed to be successful this instance)
-    public void specialTrollResult() {
-
-        if (player.specialAttack == 0) {
-
-
-            //Main text in UI
-            ui.mainTextPlace.setText("The enemy has been obliterated.");
-
-            // Buttons
-            ui.choice1.setText("Continue");
-            ui.choice2.setText("-");
-            ui.choice3.setText("-");
-
-            // button assign
-            game.position1 = "winTrollBattle";
-            game.position2 = "";
-            game.position3 = "";
-        } else if (player.specialAttack == 1) {
-
-            //Main text in UI
-            ui.mainTextPlace.setText("You have been obliterated.");
-
-            // Buttons
-            ui.choice1.setText("Continue");
-            ui.choice2.setText("-");
-            ui.choice3.setText("-");
-
-            // button assign
-            game.position1 = "loseBattle";
-            game.position2 = "";
-            game.position3 = "";
-        } else {
-            //Main text in UI
-            ui.mainTextPlace.setText("The enemy has been obliterated.");
-
-            // Buttons
-            ui.choice1.setText("Continue");
-            ui.choice2.setText("-");
-            ui.choice3.setText("-");
-
-            // button assign
-            game.position1 = "winTrollBattle";
-            game.position2 = "";
-            game.position3 = "";
-        }
-
-
-    }
-
     public void innerCityNothing() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("You decide to do nothing and slip away" +
-                "\nwhile the undead monsters are distracted." +
-                "\n\nAs you move over to the next street the screams" +
-                "\ngradually fade and suddenly stop." +
+        ui.mainTextPlace.setText("You decide to do nothing and slip away while the undead monsters are distracted." +
+                "\n\nAs you move over to the next street the screams gradually fade and suddenly stop." +
                 "\n\nHer screams will haunt you forever...");
 
         // Buttons
@@ -4932,13 +4905,9 @@ public class Story {
     public void innerCityRoam() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("You decide look around. Careful as not to" +
-                "\nattract any unwanted attention." +
-                "\n\nYou slip between houses looking for some sign of" +
-                "\nlife." +
-                "\n\nYou come across the city church. The graves in" +
-                "\nthe graveyard accompanying it have all been dug" +
-                "\nup." +
+        ui.mainTextPlace.setText("You decide look around. Careful as not to attract any unwanted attention." +
+                "\n\nYou slip between houses looking for some sign of life." +
+                "\n\nYou come across the city church. The graves in the graveyard accompanying it have all been dug up." +
                 "\n\nWill you enter?");
 
         // Buttons
@@ -4957,8 +4926,7 @@ public class Story {
 
         //Main text in UI
         ui.mainTextPlace.setText("As you go to walk past you feel drawn to it." +
-                "\n\nYou think to yourself, 'Am i sure i don't want to" +
-                "\ngo in?'");
+                "\n\nYou think to yourself, 'Am I sure i don't want to go in?'");
 
         // Buttons
         ui.choice1.setText("Church");
@@ -4994,11 +4962,8 @@ public class Story {
 
         //Main text in UI
         ui.mainTextPlace.setText("The church hall is tall." +
-                "\n\nBroken benches lay on the floor and blood" +
-                "\nstains the walls." +
-                "\n\nAs you walk towards the altar the room starts to" +
-                "\ndim. Light fades and a feeling of dread" +
-                "\nencumbers you.." +
+                "\n\nBroken benches lay on the floor and blood stains the walls." +
+                "\n\nAs you walk towards the altar the room starts to dim. Light fades and a feeling of dread encumbers you.." +
                 "\n\nA shadowy figure seems to be standing at by the altar.");
 
         // Buttons
@@ -5034,11 +4999,9 @@ public class Story {
 
         //Main text in UI
         ui.mainTextPlace.setText("'Who are you?'" +
-                "\n\nThe shadowy figure replies in a long and strained" +
-                "\nvoice: 'Death'" +
+                "\n\nThe shadowy figure replies in a long and strained voice: 'Death'" +
                 "\n\nSuddenly you start to feel how empty this room is." +
-                "\n\nFog comes from your breath as the air turns ice" +
-                "\ncold.");
+                "\n\nFog comes from your breath as the air turns ice cold.");
 
         // Buttons
         ui.choice1.setText("Speak");
@@ -5055,8 +5018,7 @@ public class Story {
     public void innerCityChurchSpeak2() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("'Why are you here? What has happened to this" +
-                "\nland?!" +
+        ui.mainTextPlace.setText("'Why are you here? What has happened to this land?!" +
                 "\n\nThe shadowy figure does not respond" +
                 "\n\nYou reach for your sword..." +
                 "\n\n'ANSWER ME!'");
@@ -5093,15 +5055,10 @@ public class Story {
     public void innerCityChurchAttack() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("You draw your sword and leap forward" +
-                "\nswinging it overhead at the shadowy figure." +
-                "\n\nYour sword strikes down and crashes against some" +
-                "\nsort of barrier, stopping just before the shadowy" +
-                "\nfigure." +
-                "\n\nA burst of energy erupts throwing you back into" +
-                "\nthe middle of the room." +
-                "\n\nAs your back hits the floor the shadowy figure lets out" +
-                "\na screech and the shadow morphs and manifests over you.");
+        ui.mainTextPlace.setText("You draw your sword and leap forward swinging it overhead at the shadowy figure." +
+                "\n\nYour sword strikes down and crashes against some sort of barrier, stopping just before the shadowy figure." +
+                "\n\nA burst of energy erupts throwing you back into the middle of the room." +
+                "\n\nAs your back hits the floor the shadowy figure lets out a screech and the shadow morphs and manifests over you.");
 
         // Buttons
         ui.choice1.setText("Speak");
@@ -5118,16 +5075,17 @@ public class Story {
 
     public void innerCityChurchSpeak3() {
 
+        player.setShadowyFigure(1);
+
         //Main text in UI
         ui.mainTextPlace.setText("Before you can speak all light escapes the hall." +
                 "\n\nYou cannot see." +
                 "\n\nA whisper in your right ear..." +
-                "\n\nI'm alive as you but without breath," +
+                "\n\n'I'm alive as you but without breath," +
                 "\nAs cold in my life as in my death." +
                 "\nNever a thirst though i always drink," +
-                "\nDressed in mail but never clink." +
-                "\n\nThe darkness fades and the shadowy figure is" +
-                "\ngone.");
+                "\nDressed in mail but never clink.'" +
+                "\n\nThe darkness fades and the shadowy figure is gone.");
 
         // Buttons
         ui.choice1.setText(">");
@@ -5144,12 +5102,9 @@ public class Story {
     public void leaveCityLeaveChurch() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("'What does that even mean? Is it some sort of" +
-                "\nriddle?'" +
-                "\n\n'Seems odd that whatever that was, stopped by" +
-                "\nto tell me a riddle...'" +
-                "\n\nThe back door of the church busts open and" +
-                "\nundead come pouring in!");
+        ui.mainTextPlace.setText("'What does that even mean? Is it some sort of riddle?'" +
+                "\n\n'Seems odd that whatever that was, stopped by to tell me a riddle...'" +
+                "\n\nThe back door of the church busts open and undead come pouring in!");
 
         // Buttons
         ui.choice1.setText("Run");
@@ -5168,8 +5123,7 @@ public class Story {
 
         //Main text in UI
         ui.mainTextPlace.setText("You leave the city through the gates." +
-                "\n\n'The city is over run. It's certain death if" +
-                "\nI stay there any longer.'" +
+                "\n\n'The city is over run. It's certain death if I stay there any longer.'" +
                 "\n\n'The next town is a few miles north from here.'" +
                 "\n\n'My good friend Leon lives there'.");
 
@@ -5212,8 +5166,7 @@ public class Story {
 
         //Main text in UI
         ui.mainTextPlace.setText("Some time down the path you come to a cross road." +
-                "\n\nThere is no sign post but you know that forward" +
-                "\nleads to Leon.");
+                "\n\nThere is no sign post but you know that forward leads to Leon.");
 
         // Buttons
         ui.choice1.setText("Choose");
@@ -5244,49 +5197,442 @@ public class Story {
 
     }
 
-    public void crossRoadForward() {
-
-        //Main text in UI
-        ui.mainTextPlace.setText("THIS LEADS TO LEON");
-
-        // Buttons
-        ui.choice1.setText("Forward");
-        ui.choice2.setText("Left");
-        ui.choice3.setText("Right");
-
-        // button assign
-        game.position1 = "crossRoadForward";
-        game.position2 = "crossRoadLeft";
-        game.position3 = "crossRoadRight";
-
-    }
 
     public void crossRoadLeft() {
 
-        //Main text in UI
-        ui.mainTextPlace.setText("THIS LEADS LEFT");
+        if (player.getMerchantItem() == 0) {
+            //Main text in UI
+            ui.mainTextPlace.setText("You go left." +
+                    "\n\nIt's a long road that has you walking for some time." +
+                    "\n\nUp ahead you see a cart hidden behind some bushes just off the road." +
+                    "\n\nSomeone seems to be moving by it. ");
 
-        // Buttons
-        ui.choice1.setText("Forward");
-        ui.choice2.setText("Left");
-        ui.choice3.setText("Right");
+            // Buttons
+            ui.choice1.setText("Investigate");
+            ui.choice2.setText("-");
+            ui.choice3.setText("Back");
 
-        // button assign
-        game.position1 = "crossRoadForward";
-        game.position2 = "crossRoadLeft";
-        game.position3 = "crossRoadRight";
+            // button assign
+            game.position1 = "leftInvestigate";
+            game.position2 = "";
+            game.position3 = "leonCrossRoad";
+        } else {
+
+            //Main text in UI
+            ui.mainTextPlace.setText("You go left." +
+                    "\n\nIt's a long road that has you walking for some time." +
+                    "\n\nUp ahead you notice the merchant hidden, almost out of sight." +
+                    "\n\n'Hello again!' he says." +
+                    "\n\n'I have nothing more for you im afraid now stop giving my hiding spot away!'");
+
+            // Buttons
+            ui.choice1.setText("Continue");
+            ui.choice2.setText("-");
+            ui.choice3.setText("Back");
+
+            // button assign
+            game.position1 = "cartManLieContinue";
+            game.position2 = "";
+            game.position3 = "leonCrossRoad";
+        }
 
     }
+
+    public void leftInvestigate() {
+
+        if (player.getMerchantLie() == 0) {
+            //Main text in UI
+            ui.mainTextPlace.setText("As get closer you can see a man rummaging through the cart." +
+                    "\n\n'What are you doing?' you ask." +
+                    "\n\n'Huh?!' the man gasps." +
+                    "\n\nWhat'r YOU doing creeping up on people like that. Don't you know there are monsters roaming this land?'");
+
+            // Buttons
+            ui.choice1.setText("Apologise");
+            ui.choice2.setText("-");
+            ui.choice3.setText("-");
+
+            // button assign
+            game.position1 = "cartApologise";
+            game.position2 = "";
+            game.position3 = "";
+
+        } else {
+
+            //Main text in UI
+            ui.mainTextPlace.setText("As get closer you can see a man rummaging through the cart.");
+
+            // Buttons
+            ui.choice1.setText("Speak");
+            ui.choice2.setText("Continue");
+            ui.choice3.setText("Leave");
+
+            // button assign
+            game.position1 = "cartManLieSpeak2";
+            game.position2 = "cartManContinue";
+            game.position3 = "cartManLieLeave";
+
+        }
+    }
+
+    public void cartManLieSpeak2() {
+
+        //Main text in UI
+        ui.mainTextPlace.setText("The merchant ignores you and carries on.");
+
+        // Button
+        ui.choice1.setText("Continue");
+        ui.choice2.setText("-");
+        ui.choice3.setText("Leave");
+
+        // button assign
+        game.position1 = "cartManLieContinue";
+        game.position2 = "";
+        game.position3 = "cartManLieLeave";
+
+    }
+
+    public void cartManLieContinue() {
+
+        //Main text in UI
+        ui.mainTextPlace.setText("The road goes on for miles. You need go back and find Leon.");
+
+        // Button
+        ui.choice1.setText("Cross road");
+        ui.choice2.setText("-");
+        ui.choice3.setText("-");
+
+        // button assign
+        game.position1 = "leonCrossRoad";
+        game.position2 = "";
+        game.position3 = "";
+
+    }
+
+    public void cartApologise() {
+
+        //Main text in UI
+        ui.mainTextPlace.setText("Forgive me' you say. 'I did not mean to scare you.'" +
+                "\n\n'It's alright it's not your fault. he replies. 'I jump at anything these days as you can imagine.'" +
+                "\n\n'You do know whats going on, right?'");
+
+        // Buttons
+        ui.choice1.setText("Yes");
+        ui.choice2.setText("No");
+        ui.choice3.setText("-");
+
+        // button assign
+        game.position1 = "cartAnswerYes";
+        game.position2 = "cartAnswerNo";
+        game.position3 = "";
+
+    }
+
+    public void cartAnswerYes() {
+
+        //Main text in UI
+        ui.mainTextPlace.setText("'Then it's only a matter of time before you end up dead just like " +
+                "everybody else.'" +
+                "\n\n'This is why i've tried to conceal my cart out here on this long road. " +
+                "Nobody comes this way and i survive by staying out of site!'");
+
+        // Buttons
+        ui.choice1.setText("Speak");
+        ui.choice2.setText("");
+        ui.choice3.setText("-");
+
+        // button assign
+        game.position1 = "cartManSpeak";
+        game.position2 = "";
+        game.position3 = "";
+
+    }
+
+    public void cartManSpeak() {
+
+        //Main text in UI
+        ui.mainTextPlace.setText("'Who are you?' you ask." +
+                "\n\n'Ahh my name is O'waka and this cart is my life. I am a traveling merchant you see." +
+                "\n\nAnd who might you be?'");
+
+        // Buttons
+        ui.choice1.setText("Truth");
+        ui.choice2.setText("Lie");
+        ui.choice3.setText("-");
+
+        // button assign
+        game.position1 = "cartManTruth";
+        game.position2 = "cartManLie";
+        game.position3 = "";
+
+    }
+
+    public void cartManTruth() {
+
+        if (player.getShadowyFigure() == 1) {
+            //Main text in UI
+            ui.mainTextPlace.setText("'I am from HillTale. My village was destroyed and I am trying to find out why this has happened.'" +
+                    "\n\n'Sorry to hear it' he says" +
+                    "\n\n'I have some things left on the cart, stocks are running low these days but i'm happy to help out someone " +
+                    "in need." +
+                    "\nHere, take something from me." +
+                    "\nThe merchant lays these out on the back of his cart:" +
+                    "\n\n''A potion to help keep you alive.'" +
+                    "\n'A fish to feed your hunger.'" +
+                    "\n'A shield which gives you a slight chance to negate incoming damage.'");
+
+
+            // Buttons
+            ui.choice1.setText("Potion");
+            ui.choice2.setText("Fish");
+            ui.choice3.setText("Shield");
+
+            // button assign
+            game.position1 = "cartTakePotion";
+            game.position2 = "cartTakeFish";
+            game.position3 = "cartTakeShield";
+
+        } else {
+
+            //Main text in UI
+            ui.mainTextPlace.setText("'I am from HillTale. My village was destroyed and I am trying to find out why this has happened.'" +
+                    "\n\n'Sorry to hear it' he says" +
+                    "\n\n'I have some things left on the cart, stocks are running low these days but i'm happy to help out someone " +
+                    "in need." +
+                    "\nHere, take something from me." +
+                    "\nThe merchant lays these out on the back of his cart:" +
+                    "\n\n''A potion to help keep you alive." +
+                    "\n'A shield which gives you a slight chance to negate incoming damage.'");
+
+
+            // Buttons
+            ui.choice1.setText("Potion");
+            ui.choice2.setText("-");
+            ui.choice3.setText("Shield");
+
+            // button assign
+            game.position1 = "cartTakePotion";
+            game.position2 = "";
+            game.position3 = "cartTakeShield";
+
+        }
+    }
+
+    public void cartManLie() {
+
+        //Main text in UI
+        ui.mainTextPlace.setText("'I am a descendant of the gods sent here to stop this evil which has plagued the land.'" +
+                "\n\n......" +
+                "" +
+                "\n\n'HAH!' he yells" +
+                "\n\n'Descendant of the gods, and they say im the mad one!'" +
+                "\n\n'Listen here son if you don't want to tell the truth, fine but don't go around telling the most outrageous" +
+                "lies.'" +
+                "\n\nThe man is clearly annoyed by your lie.");
+
+        // Buttons
+        ui.choice1.setText("Truth");
+        ui.choice2.setText("Lie");
+        ui.choice3.setText("-");
+
+        // button assign
+        game.position1 = "cartManTruth";
+        game.position2 = "cartManLie2";
+        game.position3 = "";
+
+    }
+
+    public void cartManLie2() {
+
+        player.setMerchantLie(1);
+
+        //Main text in UI
+        ui.mainTextPlace.setText("'Ah sticking to your lies are you?.'" +
+                "\n'That's fine by me i have no time for liars and time wasters. I bid you farewell.'");
+
+        // Buttons
+        ui.choice1.setText("Speak");
+        ui.choice2.setText("-");
+        ui.choice3.setText("Leave");
+
+        // button assign
+        game.position1 = "cartManLieSpeak";
+        game.position2 = "";
+        game.position3 = "cartManLieLeave";
+
+    }
+
+    public void cartManLieSpeak() {
+
+        //Main text in UI
+        ui.mainTextPlace.setText("The merchant carries on rummaging through his cart, ignoring you.");
+
+        // Buttons
+        ui.choice1.setText("Speak");
+        ui.choice2.setText("Continue");
+        ui.choice3.setText("Leave");
+
+        // button assign
+        game.position1 = "cartManLieSpeak";
+        game.position2 = "cartManLieContinue";
+        game.position3 = "cartManLieLeave";
+
+    }
+
+    public void cartManLieLeave() {
+
+        //Main text in UI
+        ui.mainTextPlace.setText("You leave after no response from the merchant and head back to the crossroad.");
+
+        // Buttons
+        ui.choice1.setText("Cross road");
+        ui.choice2.setText("-");
+        ui.choice3.setText("-");
+
+        // button assign
+        game.position1 = "leonCrossRoad";
+        game.position2 = "";
+        game.position3 = "";
+
+    }
+
+
+    public void cartTakePotion() {
+
+        player.setMerchantItem(1);
+
+        player.potionCapacity += 1;
+        ui.potionCapNum.setText(Integer.toString(player.potionCapacity));
+
+        clip = new SoundEffects();
+        clip.PlaySound("potionCollect.wav");
+
+        //Main text in UI
+        ui.mainTextPlace.setText("'Ahh the potion. Good choice!'" +
+                "\n\n'Now I bid you farewell good sir! A big guy like you will attract some attention.'");
+
+        // Buttons
+        ui.choice1.setText("Farewell");
+        ui.choice2.setText("-");
+        ui.choice3.setText("Leave");
+
+        // button assign
+        game.position1 = "cartFarewell";
+        game.position2 = "";
+        game.position3 = "cartLeave";
+
+    }
+
+    public void cartTakeFish() {
+
+
+        player.setMerchantItem(1);
+        player.setFishItem(1);
+
+        //Main text in UI
+        ui.mainTextPlace.setText("'Ahh the fish. Unusual choice!'" +
+                "\n\n'Now i bid you farewell good sir! You and your smelly fish! A big guy like you will attract some attention.'");
+
+        // Buttons
+        ui.choice1.setText("Farewell");
+        ui.choice2.setText("-");
+        ui.choice3.setText("Leave");
+
+        // button assign
+        game.position1 = "cartFarewell";
+        game.position2 = "";
+        game.position3 = "cartLeave";
+
+    }
+
+    public void cartTakeShield() {
+
+        player.setMerchantItem(1);
+        player.setShield(1);
+
+        //Main text in UI
+        ui.mainTextPlace.setText("'Ahh the shield. Wonderful choice!'" +
+                "\n\n'Now I bid you farewell good sir! You and that pink shield will attract some attention.'");
+
+        // Buttons
+        ui.choice1.setText("Farewell");
+        ui.choice2.setText("-");
+        ui.choice3.setText("Leave");
+
+        // button assign
+        game.position1 = "cartFarewell";
+        game.position2 = "";
+        game.position3 = "cartLeave";
+
+    }
+
+
+    public void cartAnswerNo() {
+
+        //Main text in UI
+        ui.mainTextPlace.setText("'Where have you been hiding? under a rock?!' the merchant asks." +
+                "\n\n'You know these lands have become infested with the dead. I hear a dark magic is being controlled" +
+                "to cast evil upon us. I hear it hit the northern land first.'" +
+                "\n\n'That's towards Leon.' you think to yourself." +
+                "\n\n'Where are ya from?' he asks.");
+
+        // Buttons
+        ui.choice1.setText("Truth");
+        ui.choice2.setText("Lie");
+        ui.choice3.setText("-");
+
+        // button assign
+        game.position1 = "cartManTruth";
+        game.position2 = "cartManLie";
+        game.position3 = "";
+
+    }
+
+    public void cartLeave() {
+
+        //Main text in UI
+        ui.mainTextPlace.setText("You leave without saying anything..." +
+                "\n\n'Not even a thanks, or goodbye. How rude.'");
+
+        // Buttons
+        ui.choice1.setText("Cross road");
+        ui.choice2.setText("Continue");
+        ui.choice3.setText("-");
+
+        // button assign
+        game.position1 = "leonCrossRoad";
+        game.position2 = "cartManLieContinue";
+        game.position3 = "";
+
+    }
+
+    public void cartFarewell() {
+
+        //Main text in UI
+        ui.mainTextPlace.setText("'Farewell and thanks for the item.'" +
+                "\n\n'You are most welcome!' the merchant replies." +
+                "\n\n'Bye!'");
+
+        // Buttons
+        ui.choice1.setText("Cross road");
+        ui.choice2.setText("Continue");
+        ui.choice3.setText("-");
+
+        // button assign
+        game.position1 = "leonCrossRoad";
+        game.position2 = "cartManLieContinue";
+        game.position3 = "";
+
+    }
+
 
     public void crossRoadRight() {
 
         //Main text in UI
         ui.mainTextPlace.setText("You head right." +
-                "\n\nThe path veers off and bends around a lake and" +
-                "\ninto the forest." +
+                "\n\nThe path veers off and bends around a lake and into the forest." +
                 "\n\nYou come to the edge of the forest." +
-                "\n\nThe trees tower over you making the whole" +
-                "\nforest dark." +
+                "\n\nThe trees tower over you making the whole forest dark." +
                 "\n\nAn strange moan travels along the wind.");
 
         // Buttons
@@ -5304,14 +5650,11 @@ public class Story {
     public void enterForest() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("You cautiously make your way deeper into" +
-                "\nthe forest." +
+        ui.mainTextPlace.setText("You cautiously make your way deeper into the forest." +
                 "\n\nYou feel as though you are being watched." +
-                "\n\nTrying to stay on the faded path, you come" +
-                "\nacross an old sign." +
+                "\n\nTrying to stay on the faded path, you come across an old sign." +
                 "\n\nIt reads:" +
-                "\n\nThe Witch, The Witch & The Witch." +
-                "\nKnock these times for us to see.");
+                "\n\nThe Witch, The Witch & The Witch. Knock these times for us to see.");
 
         // Buttons
         ui.choice1.setText("Continue");
@@ -5329,8 +5672,7 @@ public class Story {
 
         //Main text in UI
         ui.mainTextPlace.setText("'A witch?!' you say to yourself." +
-                "\n\n'My past experiences with witches have never" +
-                "\nended pleasantly.'");
+                "\n\n'My past experiences with witches have never ended pleasantly.'");
 
         // Buttons
         ui.choice1.setText("Continue");
@@ -5346,13 +5688,11 @@ public class Story {
 
     public void forestWitchProtector() {
 
-        if(player.getDefeatGuardian() == 0) {
+        if (player.getDefeatGuardian() == 0) {
             //Main text in UI
-            ui.mainTextPlace.setText("What little path there was disappears and" +
-                    "\nthere is only forest floor." +
+            ui.mainTextPlace.setText("What little path there was disappears and there is only forest floor." +
                     "\n\nYou see a small hut, hidden between the trees." +
-                    "\n\nBefore you can take another step one of the trees" +
-                    "\ncomes to life and blocks your path!");
+                    "\n\nBefore you can take another step one of the trees comes to life and blocks your path!");
 
             // Buttons
             ui.choice1.setText("Continue");
@@ -5364,15 +5704,12 @@ public class Story {
             game.position2 = "";
             game.position3 = "";
 
-        }
-        else{
+        } else {
 
             //Main text in UI
-            ui.mainTextPlace.setText("what little path there was disappears and." +
-                    "\nthere is only forest floor." +
+            ui.mainTextPlace.setText("what little path there was disappears and there is only forest floor." +
                     "\n\nYou see a small hut, hidden between the trees." +
-                    "\n\nYou cautiously take a step closer but this time" +
-                    "\nthere is no Guardian...");
+                    "\n\nYou cautiously take a step closer but this time there is no Guardian...");
 
             // Buttons
             ui.choice1.setText("Continue");
@@ -5430,8 +5767,7 @@ public class Story {
 
 
         //Main text in UI
-        ui.mainTextPlace.setText("It seems too strong. You decide not to engage" +
-                "\nAnd leave the forest.");
+        ui.mainTextPlace.setText("It seems too strong. You decide not to engage and leave the forest.");
 
         // Buttons
         ui.choice1.setText("Run");
@@ -5568,8 +5904,7 @@ public class Story {
 
         //Main text in UI
         ui.mainTextPlace.setText("You have slain the " + enemy.getType() + "" +
-                "\n\nRoots starts to engulf the ent as it disappears" +
-                "\ninto the ground.");
+                "\n\nRoots starts to engulf the ent as it disappears into the ground.");
 
 
         // Sound effect
@@ -5677,7 +6012,7 @@ public class Story {
         } else if (player.specialAttack == 1) {
 
             //Main text in UI
-            ui.mainTextPlace.setText("The enemy has been obliterated.");
+            ui.mainTextPlace.setText("You have been obliterated.");
 
             // Buttons
             ui.choice1.setText("Continue");
@@ -5711,21 +6046,21 @@ public class Story {
         player.witchCounter = player.witchCounter += 1;
 
 
-            //Main text in UI
-            ui.mainTextPlace.setText("You approach the hut." +
-                    "\n\nIt seems to have merged with the forest." +
-                    "\n\nWhat will you do?");
+        //Main text in UI
+        ui.mainTextPlace.setText("You approach the hut." +
+                "\n\nIt seems to have merged with the forest." +
+                "\n\nWhat will you do?");
 
-            // Buttons
-            ui.choice1.setText("Knock");
-            ui.choice2.setText("-");
-            ui.choice3.setText("Leave");
+        // Buttons
+        ui.choice1.setText("Knock");
+        ui.choice2.setText("-");
+        ui.choice3.setText("Leave");
 
-            // button assign
-            game.position1 = "hutKnock1";
-            game.position2 = "";
-            game.position3 = "entRunCrossRoad";
-        }
+        // button assign
+        game.position1 = "hutKnock1";
+        game.position2 = "";
+        game.position3 = "entRunCrossRoad";
+    }
 
     public void hutKnock1() {
 
@@ -5747,8 +6082,7 @@ public class Story {
 
 
         //Main text in UI
-        ui.mainTextPlace.setText("You knock again but there is still no answer." +
-                "\nIt doesn't seem like anybody is home.");
+        ui.mainTextPlace.setText("You knock again but there is still no answer. It doesn't seem like anybody is home.");
 
         // Buttons
         ui.choice1.setText("Knock");
@@ -5779,8 +6113,7 @@ public class Story {
             game.position3 = "";
 
 
-        }
-        else{
+        } else {
 
             clip = new SoundEffects();
             clip.PlaySound("doorCreek.wav");
@@ -5808,15 +6141,13 @@ public class Story {
 
     public void witchesHutAnswer() {
 
-        if(player.getWitchCounter() == 2) {
+        if (player.getWitchCounter() == 2) {
             //Main text in UI
             ui.mainTextPlace.setText("'We have been expecting you.' they all say." +
                     "\n\n'Yes, yes, yes." +
-                    "\n\nYou are having the strangest feeling of" +
-                    "\nof deva vu.");
+                    "\n\nYou are having the strangest feeling of of deva vu.");
 
-        }
-        else{
+        } else {
             //Main text in UI
             ui.mainTextPlace.setText("'We have been expecting you.' they all say." +
                     "\n\n'Yes, yes, yes");
@@ -5850,13 +6181,10 @@ public class Story {
             game.position1 = "witchesConvo2";
             game.position2 = "";
             game.position3 = "";
-        }
-        else{
+        } else {
 
             //Main text in UI
-            ui.mainTextPlace.setText("Before you can say anything the witches" +
-                    "\nhold out their hands and present to you a" +
-                    "\npurple skull necklace." +
+            ui.mainTextPlace.setText("Before you can say anything the witches hold out their hands and present to you a purple skull necklace." +
                     "\n\n'This land is plagued by death and decay," +
                     "\n\nPrevent it one time and one time only, okay?.'");
 
@@ -5875,8 +6203,7 @@ public class Story {
     public void witchesConvo2() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("Before you can speak one of the witches" +
-                "\nplucks at your hair and another cuts your arm." +
+        ui.mainTextPlace.setText("Before you can speak one of the witches plucks at your hair and another cuts your arm." +
                 "\n\nThe witches chant:" +
                 "\n\n'Visit the witch," +
                 "\nthe witch of 3'." +
@@ -5897,10 +6224,14 @@ public class Story {
 
     public void witchesNecklace() {
 
+        player.setNecklaceOfLife(1);
+
         //Main text in UI
-        ui.mainTextPlace.setText("You take the necklace and put it around" +
-                "\nyour neck." +
-                "\n\nYou become");
+        ui.mainTextPlace.setText("You take the necklace and put it around your neck." +
+                "\n\nYou feel an aura of energy pulsate out from your body." +
+                "\n\nYou now have the necklace of life." +
+                "\n\nIt will prevent you from dying when your HP drops to 0 and will restore 20 HP." +
+                "\n\nYou black out, again...");
         // Buttons
         ui.choice1.setText("Wake");
         ui.choice2.setText("-");
@@ -5912,23 +6243,655 @@ public class Story {
         game.position3 = "";
     }
 
-    public void necklaceCrossRoad() {
+    public void crossRoadForward() {
 
         //Main text in UI
-        ui.mainTextPlace.setText("You take the necklace and put it around" +
-                "\nyour neck." +
-                "\n\nYou become");
+        ui.mainTextPlace.setText("You head onwards towards the next town in the hopes to find Leon.");
+
         // Buttons
-        ui.choice1.setText("Wake");
+        ui.choice1.setText("Continue");
         ui.choice2.setText("-");
         ui.choice3.setText("-");
 
         // button assign
-        game.position1 = "entRunCrossRoad";
+        game.position1 = "travelLeon";
+        game.position2 = "";
+        game.position3 = "";
+
+    }
+
+    public void travelLeon() {
+
+        //Main text in UI
+        ui.mainTextPlace.setText("The road is long." +
+                "\n\nYou pass through woods, rivers and farms." +
+                "\n\nIn the distance on top of a hill you can see a tall building." +
+                "\n\n'That must be the monastery.'" +
+                "\n\nThere seems to be a dark aura shifting around it.");
+
+        // Buttons
+        ui.choice1.setText("Investigate");
+        ui.choice2.setText("Ignore");
+        ui.choice3.setText("-");
+
+        // button assign
+        game.position1 = "monasteryGates";
+        game.position2 = "monasteryIgnore";
+        game.position3 = "";
+
+    }
+
+    public void monasteryIgnore() {
+
+        //Main text in UI
+        ui.mainTextPlace.setText("You continue on to find Leon." +
+                "\n\nYou find yourself walking in the direction the monastery." +
+                "\n\nEverytime you walk in a different direction you end up heading towards the monastery.");
+
+        // Buttons
+        ui.choice1.setText("Continue");
+        ui.choice2.setText("-");
+        ui.choice3.setText("-");
+
+        // button assign
+        game.position1 = "monasteryGates";
+        game.position2 = "";
+        game.position3 = "";
+
+    }
+
+    public void monasteryGates() {
+
+        //Main text in UI
+        ui.mainTextPlace.setText("You reach the monastery gates." +
+                "\n\nYou can feel a surge of energy emitting from the dark aura surrounding it.");
+
+        // Buttons
+        ui.choice1.setText("Enter");
+        ui.choice2.setText("-");
+        ui.choice3.setText("-");
+
+        // button assign
+        game.position1 = "monasteryWhisper";
+        game.position2 = "";
+        game.position3 = "";
+
+    }
+
+    public void monasteryWhisper() {
+
+
+        clip = new SoundEffects();
+        clip.PlaySound("whisper2.wav");
+
+        //Main text in UI
+        ui.mainTextPlace.setText("A constant whisper invades your head." +
+                "\n\nYou are drawn in and cannot turn away.");
+
+        // Buttons
+        ui.choice1.setText("Enter");
+        ui.choice2.setText("-");
+        ui.choice3.setText("-");
+
+        // button assign
+        game.position1 = "monastery";
+        game.position2 = "";
+        game.position3 = "";
+
+    }
+
+    public void monastery() {
+
+        //Main text in UI
+        ui.mainTextPlace.setText("Inside the monastery all light escapes the room except for the dim essence of " +
+                "the aura infecting the monastery." +
+                "\n\nYou look around but see nothing.");
+
+        // Buttons
+        ui.choice1.setText("Continue");
+        ui.choice2.setText("-");
+        ui.choice3.setText("-");
+
+        // button assign
+        game.position1 = "insideMonastery";
+        game.position2 = "";
+        game.position3 = "";
+
+    }
+
+    public void insideMonastery() {
+
+        //Main text in UI
+        ui.mainTextPlace.setText("A tall figure morphs from the shadows and appears in front of you." +
+                "\n\nIt's eye glow red and you get a sense of despair.");
+
+        // Buttons
+        ui.choice1.setText("Speak");
+        ui.choice2.setText("-");
+        ui.choice3.setText("-");
+
+        // button assign
+        game.position1 = "insideMonasterySpeak";
+        game.position2 = "";
+        game.position3 = "";
+
+    }
+
+    public void insideMonasterySpeak() {
+
+        if (player.getSavedElla() > 0) {
+
+            //Main text in UI
+            ui.mainTextPlace.setText("'Who are you?' you ask" +
+                    "\n\nIt releases a growl..." +
+                    "\n\n'I am Calyx'.");
+
+            // Buttons
+            ui.choice1.setText("Calyx?!");
+            ui.choice2.setText("-");
+            ui.choice3.setText("-");
+
+            // button assign
+            game.position1 = "monasterySavedElla";
+            game.position2 = "";
+            game.position3 = "";
+
+        }
+
+        else if (player.getShadowyFigure() > 0) {
+
+            //Main text in UI
+            ui.mainTextPlace.setText("'Who are you?' you ask" +
+                    "\n\nIt releases a growl." +
+                    "\n\n'I am Calyx.'");
+
+            // Buttons
+            ui.choice1.setText("Shadow");
+            ui.choice2.setText("-");
+            ui.choice3.setText("-");
+
+            // button assign
+            game.position1 = "monasteryShadowFigure";
+            game.position2 = "";
+            game.position3 = "";
+
+        } else {
+
+            //Main text in UI
+            ui.mainTextPlace.setText("'Who are you?' you ask" +
+                    "\n\nIt releases a growl." +
+                    "\n\n'I am Calyx.'");
+
+            // Buttons
+            ui.choice1.setText("Speak");
+            ui.choice2.setText("-");
+            ui.choice3.setText("-");
+
+            // button assign
+            game.position1 = "monasteryCalyx";
+            game.position2 = "";
+            game.position3 = "";
+        }
+    }
+
+    public void monasterySavedElla() {
+
+        //Main text in UI
+        ui.mainTextPlace.setText("'You are the necromancer that Ella told me about!" +
+                "\n'You are behind all of this!'" +
+                "\n\n'I am no mere necromancer - he shrieks." +
+                "\n'I am a god of death.'" +
+                "\n'Now you shall see why!'");
+
+        // Buttons
+        ui.choice1.setText("Fight");
+        ui.choice2.setText("-");
+        ui.choice3.setText("-");
+
+        // button assign
+        game.position1 = "calyxBattle";
+        game.position2 = "";
+        game.position3 = "";
+
+    }
+
+    public void monasteryShadowFigure() {
+
+        //Main text in UI
+        ui.mainTextPlace.setText("Are you the shadow that attacked me in the city?!" +
+                "\n\n'No.' he replies." +
+                "\n'The mischief god likes to intervene. What did he tell you?!'");
+
+        // Buttons
+        ui.choice1.setText("Fight");
+        ui.choice2.setText("Tell");
+        ui.choice3.setText("-");
+
+        // button assign
+        game.position1 = "monasteryShadowFigureFight";
+        game.position2 = "monasteryShadowFigureTell";
+        game.position3 = "";
+
+    }
+
+    public void monasteryShadowFigureFight() {
+
+        //Main text in UI
+        ui.mainTextPlace.setText("'Enough talk Calyx!' Lets put and end to this!'");
+
+        // Buttons
+        ui.choice1.setText("Fight");
+        ui.choice2.setText("-");
+        ui.choice3.setText("-");
+
+        // button assign
+        game.position1 = "calyxBattle";
+        game.position2 = "";
+        game.position3 = "";
+
+    }
+
+    public void monasteryShadowFigureTell() {
+
+        //Main text in UI
+        ui.mainTextPlace.setText("'He gave me some sort of riddle...'" +
+                "\n\n'The meddling fool! - he snarls'" +
+                "\n\n'Now you die!'");
+
+        // Buttons
+        ui.choice1.setText("Fight");
+        ui.choice2.setText("-");
+        ui.choice3.setText("-");
+
+        // button assign
+        game.position1 = "calyxBattle";
+        game.position2 = "";
+        game.position3 = "";
+
+    }
+
+    public void monasteryCalyx() {
+
+        //Main text in UI
+        ui.mainTextPlace.setText("'Calyx?! What are you?'" +
+                "\n\nParts of him are extending out around him as if energy trying to escape." +
+                "\n\n'I am the cause of this eradication.' he replies." +
+                "\n\n'You mortals plague the earth.'" +
+                "\n\nYou ready your sword." +
+                "\n'So... You are behind all of this? Well I guess i have no choice but to kill you!'");
+
+        // Buttons
+        ui.choice1.setText("Fight");
+        ui.choice2.setText("-");
+        ui.choice3.setText("-");
+
+        // button assign
+        game.position1 = "calyxBattle";
+        game.position2 = "";
+        game.position3 = "";
+
+    }
+
+    public void calyxBattle() {
+
+        // Sound effect
+
+
+        enemy = new Enemy("Calyx", 80);
+
+        //Main text in UI
+        ui.mainTextPlace.setText("You run into " + enemy.getType() + "!\n" + enemy.getType() + " HP: " + enemy.getEnemyHealth());
+
+        // Buttons
+        ui.choice1.setText("Attack");
+        ui.choice2.setText("Potion");
+        ui.choice3.setText("Special");
+
+        // button assign
+        game.position1 = "attackCalyx";
+        game.position2 = "usePotionCalyx";
+        game.position3 = "useSpecialCalyx";
+
+    }
+
+    public void attackCalyx() {
+
+        // Assigning player attack value and re-assigning enemy health
+        player.playerAttack = player.rand.nextInt(player.attackValues.length) + 1;
+        enemy.enemyHealth = enemy.enemyHealth - player.getPlayerAttack();
+
+        // Sound effect
+        clip = new SoundEffects();
+        clip.PlaySound("swordAttack.wav");
+
+        //Main text in UI
+        ui.mainTextPlace.setText("You attack for: " + player.playerAttack + "\n\n" + enemy.getType() + " HP: " + enemy.getEnemyHealth());
+
+        // Statements to catch enemy death
+        if (enemy.getEnemyHealth() > 0) {
+            ui.choice1.setText("Defend");
+            ui.choice2.setText("-");
+            ui.choice3.setText("-");
+
+            // button assign
+            game.position1 = "calyxAttack";
+            game.position2 = "";
+            game.position3 = "";
+        } else {
+            // Setting health to 0 to stop displaying negative numbers
+            ui.mainTextPlace.setText("You attack for: " + player.playerAttack + "\n\n" + enemy.getType() + " HP: 0");
+            // Buttons
+            ui.choice1.setText(">");
+            ui.choice2.setText("-");
+            ui.choice3.setText("-");
+
+            // button assign
+            game.position1 = "winCalyxBattle";
+            game.position2 = "";
+            game.position3 = "";
+        }
+    }
+
+    public void calyxAttack() {
+
+
+        clip = new SoundEffects();
+        clip.PlaySound("");
+
+
+        player.shieldBlock = player.rand.nextInt(player.shieldBlockChance.length);
+
+        if ((player.shield == 1) && (player.shieldBlock == 0)) {
+
+            //Main text in UI
+            ui.mainTextPlace.setText("You Blocked the attack!");
+
+            // Buttons
+            ui.choice1.setText("Attack");
+            ui.choice2.setText("Potion");
+            ui.choice3.setText("Special");
+
+            // button assign
+            game.position1 = "attackCalyx";
+            game.position2 = "usePotionCalyx";
+            game.position3 = "useSpecialCalyx";
+
+        } else {
+
+            // Assigning enemy attack value and re-assigning player health
+            enemy.enemyAttack = enemy.rand.nextInt(enemy.attackValues.length) + 1;
+            player.playerHealth = player.playerHealth - enemy.getEnemyAttack();
+
+            //Main text in UI
+            ui.mainTextPlace.setText("The " + enemy.getType() + " attacks you for: " + enemy.getEnemyAttack());
+            // Re-assigning player health
+            ui.hpLabelNum.setText(Integer.toString(player.getPlayerHealth()));
+
+            // statements to catch player death
+            if (player.getPlayerHealth() > 0) {
+                // Buttons
+                ui.choice1.setText("Attack");
+                ui.choice2.setText("Potion");
+                ui.choice3.setText("Special");
+
+                // button assign
+                game.position1 = "attackCalyx";
+                game.position2 = "usePotionCalyx";
+                game.position3 = "useSpecialCalyx";
+            } else if((player.necklaceOfLife == 1) && (player.getPlayerHealth() < 0)) {
+                // Setting health to 0 to stop displaying negative numbers
+                ui.hpLabelNum.setText(Integer.toString(0));
+                // Buttons
+                ui.choice1.setText(">");
+                ui.choice2.setText("-");
+                ui.choice3.setText("-");
+
+                // button assign
+                game.position1 = "necklaceOfLifeUse";
+                game.position2 = "";
+                game.position3 = "";
+            }
+            else{
+
+                // Setting health to 0 to stop displaying negative numbers
+                ui.hpLabelNum.setText(Integer.toString(0));
+                // Buttons
+                ui.choice1.setText(">");
+                ui.choice2.setText("-");
+                ui.choice3.setText("-");
+
+                // button assign
+                game.position1 = "loseBattle";
+                game.position2 = "";
+                game.position3 = "";
+
+            }
+
+        }
+
+    }
+
+
+    public void winCalyxBattle() {
+
+        //Main text in UI
+        ui.mainTextPlace.setText("You have slain the " + enemy.getType());
+
+
+        // Sound effect
+        clip = new SoundEffects();
+        clip.PlaySound("winFight.wav");
+
+        // Buttons
+        ui.choice1.setText("Loot");
+        ui.choice2.setText("-");
+        ui.choice3.setText("-");
+
+        // button assign
+        game.position1 = "calyxLoot";
         game.position2 = "";
         game.position3 = "";
     }
 
+    public void CalyxLoot() {
+
+        clip = new SoundEffects();
+        clip.PlaySound("");
+
+        player.potionCapacity += 2;
+        ui.potionCapNum.setText(Integer.toString(player.potionCapacity));
+
+        clip = new SoundEffects();
+        clip.PlaySound("potionCollect.wav");
+
+        //Main text in UI
+        ui.mainTextPlace.setText("        *******************" +
+                "\n        *                                *" +
+                "\n        *   You receive loot:    *" +
+                "\n        *                                *" +
+                "\n        *    Potion x2          *" +
+                "\n        *                  *" +
+                "\n        *                                *" +
+                "\n        *                           *" +
+                "\n        *                                *" +
+                "\n        *******************");
+
+
+        // Buttons
+        ui.choice1.setText("Continue");
+        ui.choice2.setText("-");
+        ui.choice3.setText("-");
+
+        // button assign
+        game.position1 = "monasteryAfterBattle";
+        game.position2 = "";
+        game.position3 = "";
+    }
+
+    public void usePotionCalyx() {
+
+        if (player.potionCapacity > 0) {
+            //Re-assigning player health
+            player.playerHealth += 5;
+            ui.hpLabelNum.setText(Integer.toString(player.getPlayerHealth()));
+            player.potionCapacity -= 1;
+            ui.potionCapNum.setText(Integer.toString(player.potionCapacity));
+
+            ui.mainTextPlace.setText("You use a potion!");
+
+
+        } else {
+            ui.mainTextPlace.setText("You have " + player.getPotionCapacity() + " potions.");
+
+        }
+
+        // Buttons
+        ui.choice1.setText("Attack");
+        ui.choice2.setText("Potion");
+        ui.choice3.setText("Special");
+
+        // Button assign
+        game.position1 = "attackCalyx";
+        game.position2 = "usePotionCalyx";
+        game.position3 = "useSpecialCalyx";
+    }
+
+    public void useSpecialCalyx() {
+
+        //Main text in UI
+        ui.mainTextPlace.setText("The sky growls and lights up." +
+                "\n\nA blue surge runs through your veins." +
+                "\n\nYou throw your sword into the air.");
+
+
+        // Buttons
+        ui.choice1.setText("Strike");
+        ui.choice2.setText("-");
+        ui.choice3.setText("-");
+
+        // button assign
+        game.position1 = "useSpecialCalyx2";
+        game.position2 = "";
+        game.position3 = "";
+    }
+
+    public void useSpecialCalyx2() {
+
+        //Main text in UI
+        ui.mainTextPlace.setText("You catch your sword and slam it into the ground." +
+                "\n\nLightning comes crashing down around you.");
+
+        // Sound effect
+        clip = new SoundEffects();
+        clip.PlaySound("specialAttack.wav");
+
+        // Buttons
+        ui.choice1.setText(">");
+        ui.choice2.setText("-");
+        ui.choice3.setText("-");
+
+        // button assign
+        game.position1 = "specialCalyxResult";
+        game.position2 = "";
+        game.position3 = "";
+    }
+
+    // Special attack Random decider (Guaranteed to be successful this instance)
+    public void specialCalyxResult() {
+
+        if (player.specialAttack == 0) {
+
+
+            //Main text in UI
+            ui.mainTextPlace.setText("The enemy has been obliterated.");
+
+            // Buttons
+            ui.choice1.setText("Continue");
+            ui.choice2.setText("-");
+            ui.choice3.setText("-");
+
+            // button assign
+            game.position1 = "winCalyxBattle";
+            game.position2 = "";
+            game.position3 = "";
+        } else if (player.specialAttack == 1) {
+
+            //Main text in UI
+            ui.mainTextPlace.setText("You have been obliterated.");
+
+            // Buttons
+            ui.choice1.setText("Continue");
+            ui.choice2.setText("-");
+            ui.choice3.setText("-");
+
+            // button assign
+            game.position1 = "loseBattle";
+            game.position2 = "";
+            game.position3 = "";
+        } else {
+            //Main text in UI
+            ui.mainTextPlace.setText("The enemy has been obliterated.");
+
+            // Buttons
+            ui.choice1.setText("Continue");
+            ui.choice2.setText("-");
+            ui.choice3.setText("-");
+
+            // button assign
+            game.position1 = "winCalyxBattle";
+            game.position2 = "";
+            game.position3 = "";
+        }
+
+
+    }
+
+    public void necklaceOfLifeUse() {
+
+
+
+
+
+
+        //Main text in UI
+        ui.mainTextPlace.setText("Before you can die, the necklace you got from the witches erupts and emits a purple light. " +
+                "It surrounds you and you feel rejuvenated." +
+                "\n\nYou heal for 20hp.");
+
+        player.setPlayerHealth(20);
+        ui.hpLabelNum.setText(Integer.toString(player.getPlayerHealth()));
+
+        player.setNecklaceOfLife(0);
+
+        // Buttons
+        ui.choice1.setText("Attack");
+        ui.choice2.setText("-");
+        ui.choice3.setText("-");
+
+        // button assign
+        game.position1 = "attackCalyx";
+        game.position2 = "";
+        game.position3 = "";
+
+    }
+
+    public void monasteryAfterBattle() {
+
+        //Main text in UI
+        ui.mainTextPlace.setText("The evil that one spread the land is now gone along with Calyx.");
+
+
+
+        // Buttons
+        ui.choice1.setText("End");
+        ui.choice2.setText("-");
+        ui.choice3.setText("-");
+
+        // button assign
+        game.position1 = "";
+        game.position2 = "";
+        game.position3 = "";
+    }
 
 
 }

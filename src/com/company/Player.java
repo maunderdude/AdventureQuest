@@ -7,18 +7,22 @@ import java.util.Scanner;
 public class Player {
 
     // Variables
+    Scanner scan = new Scanner(System.in);
+    Random rand = new Random();
     String playerName;
     int playerHealth;
     int playerMaxHealth;
     int playerAttack;
     int potionCapacity;
-    int attackValues[] = {0, 1, 2, 3, 4, 5};
-    int specialAttackValues[] = {0, 1, 2};
+    int[] attackValues = {0, 1, 2, 3, 4, 5};
+    int[] specialAttackValues = {0, 1, 2};
+    int[] shieldBlockChance = {0,1,2,3,4};
     int potion = 5;
+    int shieldBlock;
     boolean upgradeAttack = false;
     boolean upgradeSpecial = false;
 
-    // story element variables
+    // Player states for story change
     int necklaceOfLife = 0;
     int savedElla = 0;
     int godStatus = 0;
@@ -26,102 +30,25 @@ public class Player {
     int shadowyFigure = 0;
     int defeatGuardian = 0;
     int witchCounter = 0;
-
-    Scanner scan = new Scanner(System.in);
-    Random rand = new Random();
+    int merchantLie = 0;
+    int merchantItem = 0;
+    int fishItem = 0;
+    int shield = 0;
 
     // Random value generators
-    int specialAttack =  rand.nextInt(specialAttackValues.length);
+    int specialAttack = rand.nextInt(specialAttackValues.length);
+    int shieldValue = rand.nextInt(shieldBlockChance.length);
+
+    //Random potion heal  (not used)
     //int potionAmount = rand.nextInt(potion.length);
 
 
-    public void greetPlayer(String playerName) {
-        System.out.println("Welcome " + playerName + "!");
 
-    }
-
-    /*
-    // Sequential potion use and special attack use (Not being used)
-
-    public void usePotion(){
-        boolean testBoolean = true;
-
-        if(potionCapacity > 0) {
-
-            playerHealth = playerHealth + potion;
-            // Re-assigning potion capacity after use
-            potionCapacity = potionCapacity - 1;
-            System.out.println("You use a potion.");
-            System.out.println("Your health is " + playerHealth);
-            System.out.println("You have " + potionCapacity + ".");
-        }
-        else{
-            System.out.println("You have 0 potions");
-        }
-    }
-
-
-
-    public void useSpecialAttack() {
-        boolean testBoolean = true;
-        while (testBoolean) {
-            if (specialAttack == 0) {
-                System.out.println("---------------Special Attack------------------");
-                System.out.println("You throw your sword up into the air!");
-                System.out.println("The sky starts to light up and growl");
-                System.out.println("Press enter to smite your enemy!");
-                scan.nextLine();
-                System.out.println("You slam your sword down to the ground, followed by a crashing of lightning and thunder!");
-                System.out.println("The enemy has been obliterated.");
-                System.out.println("Press enter to continue:");
-                scan.nextLine();
-                testBoolean = false;
-                break;
-
-            } else if (specialAttack == 1) {
-                System.out.println("---------------Special Attack------------------");
-                System.out.println("You throw your sword up into the air!");
-                System.out.println("The sky starts to light up and growl");
-                System.out.println("Press enter to smite your enemy!");
-                scan.nextLine();
-                System.out.println("You slam your sword down to the ground, followed by a crashing of lightning and thunder!");
-                System.out.println("The enemy has been obliterated.");
-                System.out.println("Press enter to continue:");
-                scan.nextLine();
-
-                testBoolean = false;
-                break;
-
-            }
-            else {
-                System.out.println("---------------Special Attack------------------");
-                System.out.println("You throw your sword up into the air!");
-                System.out.println("The sky starts to light up and growl");
-                System.out.println("Press enter to smite your enemy!");
-                scan.nextLine();
-                //This is the fail for special attack. Left it in in case i need to reference
-                System.out.println("You slam your sword down to the ground, followed by a crashing of lightning and thunder!");
-                System.out.println("You are obliterated.");
-                System.exit(0);
-
-                testBoolean = false;
-
-            }
-            break;
-        }
-
-    }
-
-*/
-
-
-
-
-    ///////////////// Getters and setters
-
+    // Getters and setters
 
     public String getPlayerName() {
-        return playerName; }
+        return playerName;
+    }
 
     public void setPlayerName(String playerName) {
         this.playerName = playerName;
@@ -145,7 +72,8 @@ public class Player {
     }
 
     public int getPotionCapacity() {
-        System.out.println("You have " + potionCapacity + " potions.");;
+        System.out.println("You have " + potionCapacity + " potions.");
+        ;
         return 0;
     }
 
@@ -233,5 +161,54 @@ public class Player {
     public void setWitchCounter(int witchCounter) {
         this.witchCounter = witchCounter;
     }
+
+    public int getMerchantLie() {
+        return merchantLie;
+    }
+
+    public void setMerchantLie(int merchantLie) {
+        this.merchantLie = merchantLie;
+    }
+
+    public int[] getShieldBlockChance() {
+        return shieldBlockChance;
+    }
+
+    public void setShieldBlockChance(int[] shieldBlockChance) {
+        this.shieldBlockChance = shieldBlockChance;
+    }
+
+    public int getMerchantItem() {
+        return merchantItem;
+    }
+
+    public void setMerchantItem(int merchantItem) {
+        this.merchantItem = merchantItem;
+    }
+
+    public int getFishItem() {
+        return fishItem;
+    }
+
+    public void setFishItem(int fishItem) {
+        this.fishItem = fishItem;
+    }
+
+    public int getShield() {
+        return shield;
+    }
+
+    public void setShield(int shield) {
+        this.shield = shield;
+    }
+
+    public int getShieldValue() {
+        return shieldValue;
+    }
+
+    public void setShieldValue(int shieldValue) {
+        this.shieldValue = shieldValue;
+    }
 }
+
 

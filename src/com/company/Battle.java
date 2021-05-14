@@ -7,19 +7,17 @@ import java.util.concurrent.TimeUnit;
 // class
 
 
-
 public class Battle extends Game {
 
+    //Variables
     GUI ui = new GUI();
     Enemy enemy = new Enemy("Skeleton", 5);
-
     boolean testBoolean = true;
     String battleChoice;
     Scanner scan = new Scanner(System.in);
     String fightingSound = "swordAttack.wav";
     String lightningSound = "specialAttack.wav";
     SoundEffects clip = new SoundEffects();
-
     Player player = new Player();
     Game game = new Game();
     Story story = new Story();
@@ -29,7 +27,10 @@ public class Battle extends Game {
 
     /*
 
-    //Sequential fight sequence  (Not being used)  (Before swing implementation)
+    ///////// /Sequential fight sequence  (Not being used)  (Before swing implementation) ///////////
+
+
+
 
     public void encounter(Player player, Enemy monster) {
         testBoolean = true;
@@ -692,6 +693,9 @@ public class Battle extends Game {
 
 
      */
+
+    // Getters and setters
+
 
 }
 

@@ -4,14 +4,13 @@ public class VisibilityHandler {
 
     GUI gui;
 
-    public VisibilityHandler(GUI userInterface){
+    public VisibilityHandler(GUI userInterface) {
 
         gui = userInterface;
 
     }
 
-    public void showTitleScreen(){
-
+    public void showTitleScreen() {
         // Show title screen
         gui.panel.setVisible(true);
         gui.startButtonPanel.setVisible(true);
@@ -23,7 +22,7 @@ public class VisibilityHandler {
 
     }
 
-    public void titleScreenToMain1(){
+    public void titleScreenToMain1() {
 
         // Hide title screen
         gui.panel.setVisible(false);
@@ -34,7 +33,6 @@ public class VisibilityHandler {
         gui.choiceButton.setVisible(true);
         gui.playerPanel.setVisible(true);
     }
-
 
 
 }

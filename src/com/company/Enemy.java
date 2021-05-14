@@ -2,17 +2,16 @@ package com.company;
 
 
 import java.util.Random;
+
 // class
 public class Enemy {
 
+    // Variables
     String type;
     int enemyHealth;
     int attackValues[] = {0, 1, 2, 3, 4, 5};
-
     Random rand = new Random();
-
     int enemyAttack = rand.nextInt(attackValues.length);
-
 
 
     public Enemy(String type, int enemyHealth) {

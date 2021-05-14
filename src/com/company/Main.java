@@ -9,12 +9,13 @@ import java.util.concurrent.TimeUnit;
 public class Main {
 
 
+    ///////////////// Class not in use - See 'Story for Main' /////////////////
 
 
 
 
-    // Text base version of game
 
+    // Text base version of game trials
        /*
         // Variables
         int trap = 5;
@@ -715,9 +716,6 @@ public class Main {
 
 
 */
-
-
-
 
 
 }
